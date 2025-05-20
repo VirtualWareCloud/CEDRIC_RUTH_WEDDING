@@ -9,7 +9,8 @@
   <script defer src="js/main.js"></script>
 </head>
 <body>
-  <header class="hero">
+  <div class="top-header">Cedric & Ruth Wedding</div>
+  <header class="hero-carousel">
     <img src="icons/share.png" id="shareBtn" class="share-icon" alt="Share" />
     <nav class="navbar">
       <div class="menu-toggle" id="hamburger">&#9776;</div>
@@ -20,6 +21,11 @@
         <li><a href="#rsvp">RSVP</a></li>
       </ul>
     </nav>
+    <div class="hero-images">
+      <img src="images/hero.jpg" class="hero-img fade" />
+      <img src="images/hero2.jpg" class="hero-img fade" />
+      <img src="images/hero3.jpg" class="hero-img fade" />
+    </div>
     <div class="hero-text">
       <h1>Cedric & Ruth</h1>
       <p>We're Getting Married!</p>
@@ -40,23 +46,32 @@
 
   <section id="gallery" class="section">
     <h2>Gallery</h2>
-    <div id="galleryContainer" class="slideshow-container"></div>
-    <script src="js/gallery.js"></script>
+    <div class="gallery-slider">
+      <button class="gallery-nav left">❮</button>
+      <div class="gallery-frame">
+        <img src="images/gallery1.jpg" class="gallery-img fade" />
+        <img src="images/gallery2.jpg" class="gallery-img fade" />
+        <img src="images/gallery3.jpg" class="gallery-img fade" />
+      </div>
+      <button class="gallery-nav right">❯</button>
+    </div>
   </section>
 
-  <section id="rsvp" class="section rsvp-section">
+  <section id="rsvp" class="section rsvp-section-modern">
     <h2>RSVP</h2>
     <form id="rsvpForm">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <input type="text" name="whatsapp" placeholder="WhatsApp Number" required />
-      <select name="attendance">
-        <option value="">Will you attend?</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
-      <textarea name="message" placeholder="Any message or dietary info?"></textarea>
-      <button type="submit">Submit</button>
+      <div class="rsvp-grid">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="whatsapp" placeholder="WhatsApp Number" required />
+        <select name="attendance">
+          <option value="">Will you attend?</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+        <textarea name="message" placeholder="Any message or dietary info?"></textarea>
+        <button type="submit">Submit</button>
+      </div>
     </form>
   </section>
 
