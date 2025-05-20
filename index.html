@@ -3,26 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cedric & Ruth - Royal Wedding</title>
+  <title>Cedric & Ruth Wedding</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/main.js"></script>
 </head>
 <body>
-  <header class="header">
-    <!-- Share Icon (left) -->
+
+  <!-- Black Header with Share & Hamburger -->
+  <header class="top-header">
     <div class="header-icon">
-      <button class="icon-btn" aria-label="Share">
-        <!-- Share SVG Icon -->
-        <svg viewBox="0 0 24 24">
-          <path d="M18 8a3 3 0 1 0-2.83-4H6a3 3 0 0 0 0 6h9.17A3.001 3.001 0 1 0 18 8zm0 2a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM6 10a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm7.59 2.58L9 15.17V12h-2v6h6v-2h-3.17l4.59-4.59-1.41-1.41z"></path>
+      <button class="icon-btn" aria-label="Share" id="shareBtn">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="gold">
+          <path d="M18 8a3 3 0 1 0-2.83-4H6a3 3 0 0 0 0 6h9.17A3.001 3.001 0 1 0 18 8zm0 2a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM6 10a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm7.59 2.58L9 15.17V12h-2v6h6v-2h-3.17l4.59-4.59-1.41-1.41z"/>
         </svg>
       </button>
     </div>
-    <!-- Hamburger Menu Icon (right) -->
     <div class="header-icon">
-      <button class="icon-btn" aria-label="Menu">
-        <!-- Hamburger SVG Icon -->
-        <svg viewBox="0 0 24 24">
+      <button class="icon-btn" aria-label="Menu" id="hamburger">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="gold">
           <rect y="4" width="24" height="2"></rect>
           <rect y="11" width="24" height="2"></rect>
           <rect y="18" width="24" height="2"></rect>
@@ -30,11 +29,83 @@
       </button>
     </div>
   </header>
-  <main>
-    <div style="padding: 2rem;">
-      <h1>Welcome to Cedric & Ruth's Wedding Site</h1>
-      <!-- Your content here -->
+
+  <!-- Hero Section -->
+  <section class="hero-carousel">
+    <div class="hero-images">
+      <img src="images/hero.jpg" class="hero-img fade" />
+      <img src="images/hero2.jpg" class="hero-img fade" />
+      <img src="images/hero3.jpg" class="hero-img fade" />
     </div>
-  </main>
+    <div class="hero-text">
+      <h1>Cedric & Ruth</h1>
+      <p>We're Getting Married!</p>
+    </div>
+  </section>
+
+  <!-- Navigation Menu -->
+  <nav class="navbar">
+    <ul class="nav-list" id="navLinks">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+    </ul>
+  </nav>
+
+  <!-- Our Story Section -->
+  <section id="story" class="section">
+    <h2>Our Story</h2>
+    <p>This royal romance began on a beach in Mauritius...</p>
+  </section>
+
+  <!-- Details Section -->
+  <section id="details" class="section">
+    <h2>Wedding Details</h2>
+    <p><strong>Date:</strong> October 18, 2025<br/>
+    <strong>Time:</strong> 2:00 PM<br/>
+    <strong>Venue:</strong> Seaside Garden Villa, Mauritius</p>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section">
+    <h2>Gallery</h2>
+    <div class="gallery-slider">
+      <button class="gallery-nav left">❮</button>
+      <div class="gallery-frame">
+        <img src="images/gallery1.jpg" class="gallery-img fade" />
+        <img src="images/gallery2.jpg" class="gallery-img fade" />
+        <img src="images/gallery3.jpg" class="gallery-img fade" />
+      </div>
+      <button class="gallery-nav right">❯</button>
+    </div>
+  </section>
+
+  <!-- RSVP Section -->
+  <section id="rsvp" class="section rsvp-section-modern">
+    <h2>RSVP</h2>
+    <form id="rsvpForm">
+      <div class="rsvp-grid">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="whatsapp" placeholder="WhatsApp Number" required />
+        <select name="attendance">
+          <option value="">Will you attend?</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+        <textarea name="message" placeholder="Any message or dietary info?"></textarea>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Contact Ruth: <a href="mailto:phaahlaruth@gmail.com">phaahlaruth@gmail.com</a> |
+    <a href="https://wa.me/27829627848" target="_blank">WhatsApp: 0829627848</a></p>
+    <p>© 2025 Cedric & Ruth</p>
+  </footer>
+
 </body>
 </html>
