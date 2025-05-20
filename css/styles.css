@@ -12,8 +12,10 @@ body {
 .top-header {
   background-color: #000;
   color: gold;
-  text-align: center;
-  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -29,9 +31,6 @@ h1:hover, h2:hover {
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 10px 20px;
   position: absolute;
   width: 100%;
@@ -89,8 +88,8 @@ h1:hover, h2:hover {
 }
 
 .share-icon {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
   transition: transform 0.3s;
 }
