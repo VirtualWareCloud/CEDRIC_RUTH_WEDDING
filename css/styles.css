@@ -244,16 +244,23 @@ body {
   margin: 10px 0;
 }
 
-/* Animated gold/silver separator */
 .gold-separator {
   height: 5px;
-  background: linear-gradient(-45deg, gold, silver, gold);
-  background-size: 400% 400%;
-  animation: shimmer 5s ease-in-out infinite;
-  margin: 0;
+  background: linear-gradient(90deg, gold, white, silver, gold);
+  background-size: 200% 100%;
+  animation: sparkleSlide 3s linear infinite, sparkleGlow 1s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+  border: none;
 }
-@keyframes shimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+
+@keyframes sparkleSlide {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
+
+@keyframes sparkleGlow {
+  0%, 100% { filter: brightness(1.2); }
+  50% { filter: brightness(2.5); }
+}
+
