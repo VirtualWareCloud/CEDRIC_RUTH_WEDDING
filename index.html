@@ -10,11 +10,24 @@
 </head>
 <body>
 
-  <!-- Header with Share & Menu -->
+  <!-- Header -->
   <div class="top-header">
-    <img src="icons/share.png" alt="Share" id="shareBtn" class="share-icon" />
+    <div class="share-container">
+      <img src="icons/share.png" alt="Share" id="shareBtn" class="share-icon" />
+      <span class="share-text">share</span>
+    </div>
     <img src="icons/menu.svg" alt="Menu" id="hamburger" class="menu-icon" />
   </div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <ul class="nav-list" id="navLinks">
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+    </ul>
+  </nav>
 
   <!-- Hero Carousel -->
   <section class="hero-carousel">
@@ -29,17 +42,9 @@
     </div>
   </section>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <ul class="nav-list" id="navLinks">
-      <li><a href="#story">Our Story</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#rsvp">RSVP</a></li>
-    </ul>
-  </nav>
+  <div class="gold-separator"></div>
 
-  <!-- Sections -->
+  <!-- Story -->
   <section id="story" class="section">
     <div class="section-container">
       <h2>Our Story</h2>
@@ -47,6 +52,9 @@
     </div>
   </section>
 
+  <div class="gold-separator"></div>
+
+  <!-- Details -->
   <section id="details" class="section">
     <div class="section-container">
       <h2>Wedding Details</h2>
@@ -56,6 +64,9 @@
     </div>
   </section>
 
+  <div class="gold-separator"></div>
+
+  <!-- Gallery -->
   <section id="gallery" class="section">
     <div class="section-container">
       <h2>Gallery</h2>
@@ -71,27 +82,32 @@
     </div>
   </section>
 
+  <div class="gold-separator"></div>
+
+  <!-- RSVP -->
   <section id="rsvp" class="section rsvp-section-modern">
     <div class="section-container">
       <h2>RSVP</h2>
       <form id="rsvpForm">
         <div class="rsvp-grid">
-          <input type="text" name="name" placeholder="Your Name" required />
-          <input type="email" name="email" placeholder="Your Email" required />
-          <input type="text" name="whatsapp" placeholder="WhatsApp Number" required />
-          <select name="attendance">
+          <input type="text" id="rsvpName" placeholder="Your Name" required />
+          <input type="email" id="rsvpEmail" placeholder="Your Email" required />
+          <input type="text" id="rsvpWhatsapp" placeholder="WhatsApp Number" required />
+          <select id="rsvpAttendance" required>
             <option value="">Will you attend?</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
           </select>
-          <textarea name="message" placeholder="Any message or dietary info?"></textarea>
+          <textarea id="rsvpMessage" placeholder="Any message or dietary info?"></textarea>
           <div class="rsvp-submit-wrapper">
-            <button type="submit">Submit</button>
+            <button type="button" onclick="sendToWhatsApp()">Submit</button>
           </div>
         </div>
       </form>
     </div>
   </section>
+
+  <div class="gold-separator"></div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -107,6 +123,20 @@
       <p>© 2025 Cedric & Ruth</p>
     </div>
   </footer>
+
+  <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById('rsvpName').value;
+      const email = document.getElementById('rsvpEmail').value;
+      const whatsapp = document.getElementById('rsvpWhatsapp').value;
+      const attendance = document.getElementById('rsvpAttendance').value;
+      const message = document.getElementById('rsvpMessage').value;
+
+      const fullMessage = `RSVP for Wedding:%0AName: ${name}%0AEmail: ${email}%0AWhatsApp: ${whatsapp}%0AAttending: ${attendance}%0AMessage: ${message}`;
+      const link = `https://wa.me/27829627848?text=${encodeURIComponent(fullMessage)}`;
+      window.open(link, '_blank');
+    }
+  </script>
 
 </body>
 </html>
