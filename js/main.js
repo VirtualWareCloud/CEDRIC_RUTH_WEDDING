@@ -1,36 +1,36 @@
 // Hero Image Carousel
-const heroImages = document.querySelectorAll('.hero-img');
+const heroImgs = document.querySelectorAll('.hero-img');
 let heroIndex = 0;
-function cycleHeroImages() {
-  heroImages.forEach((img, idx) => img.classList.remove('active'));
-  heroImages[heroIndex].classList.add('active');
-  heroIndex = (heroIndex + 1) % heroImages.length;
+
+function rotateHeroImages() {
+  heroImgs.forEach(img => img.classList.remove('active'));
+  heroImgs[heroIndex].classList.add('active');
+  heroIndex = (heroIndex + 1) % heroImgs.length;
 }
-setInterval(cycleHeroImages, 5000);
-cycleHeroImages();
+
+setInterval(rotateHeroImages, 4000);
+rotateHeroImages(); // Initial display
 
 // Gallery Slider
-const galleryImages = document.querySelectorAll('.gallery-img');
-const leftBtn = document.querySelector('.gallery-nav.left');
-const rightBtn = document.querySelector('.gallery-nav.right');
+const galleryImgs = document.querySelectorAll('.gallery-img');
 let galleryIndex = 0;
+
 function showGalleryImage(index) {
-  galleryImages.forEach((img, idx) => img.classList.remove('active'));
-  galleryImages[index].classList.add('active');
+  galleryImgs.forEach(img => img.classList.remove('active'));
+  galleryImgs[index].classList.add('active');
 }
-leftBtn.addEventListener('click', () => {
-  galleryIndex = (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
+document.querySelector('.gallery-nav.left').addEventListener('click', () => {
+  galleryIndex = (galleryIndex - 1 + galleryImgs.length) % galleryImgs.length;
   showGalleryImage(galleryIndex);
 });
-rightBtn.addEventListener('click', () => {
-  galleryIndex = (galleryIndex + 1) % galleryImages.length;
+document.querySelector('.gallery-nav.right').addEventListener('click', () => {
+  galleryIndex = (galleryIndex + 1) % galleryImgs.length;
   showGalleryImage(galleryIndex);
 });
 showGalleryImage(galleryIndex);
 
 // Share Button
-const shareBtn = document.getElementById('shareBtn');
-shareBtn.addEventListener('click', async () => {
+document.getElementById('shareBtn').addEventListener('click', async () => {
   if (navigator.share) {
     await navigator.share({
       title: 'Cedric & Ruth Royal Wedding',
@@ -38,13 +38,12 @@ shareBtn.addEventListener('click', async () => {
       url: window.location.href
     });
   } else {
-    alert('Sharing not supported on this device.');
+    alert('Sharing is not supported on this device.');
   }
 });
 
-// Hamburger Menu
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-  navLinks.style.display = navLinks.style.display === 'block' ? 'none' : 'block';
+// Hamburger Menu (Optional future feature)
+document.getElementById('hamburger').addEventListener('click', () => {
+  const nav = document.getElementById('navLinks');
+  nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
 });
