@@ -212,3 +212,48 @@ body {
     font-size: 1.2rem;
   }
 }
+/* Share label under icon */
+.share-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.share-text {
+  font-size: 0.7rem;
+  color: gold;
+  margin-top: 2px;
+}
+
+/* Hamburger dropdown override (already partly present) */
+.nav-list {
+  display: none;
+  flex-direction: column;
+  text-align: left;
+  background: #000;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  padding: 10px;
+  border: 1px solid gold;
+  z-index: 999;
+}
+.nav-list.open {
+  display: flex;
+}
+.nav-list li {
+  margin: 10px 0;
+}
+
+/* Animated gold/silver separator */
+.gold-separator {
+  height: 5px;
+  background: linear-gradient(-45deg, gold, silver, gold);
+  background-size: 400% 400%;
+  animation: shimmer 5s ease-in-out infinite;
+  margin: 0;
+}
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
