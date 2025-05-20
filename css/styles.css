@@ -28,6 +28,17 @@ h1:hover, h2:hover {
   color: #FFD700;
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+}
+
 .navbar a {
   color: gold;
   text-decoration: none;
@@ -35,6 +46,11 @@ h1:hover, h2:hover {
 }
 .navbar a:hover {
   color: #FFD700;
+}
+
+.nav-list {
+  display: none;
+  list-style: none;
 }
 
 .hero-carousel {
@@ -73,9 +89,6 @@ h1:hover, h2:hover {
 }
 
 .share-icon {
-  position: absolute;
-  top: 10px;
-  left: 10px;
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -83,6 +96,12 @@ h1:hover, h2:hover {
 }
 .share-icon:hover {
   transform: scale(1.1);
+}
+
+.menu-toggle {
+  font-size: 30px;
+  color: gold;
+  cursor: pointer;
 }
 
 .section {
@@ -194,7 +213,6 @@ footer a {
   .hero-text h1 { font-size: 2rem; }
   .hero-text p { font-size: 1rem; }
   .gallery-frame { flex-direction: column; height: auto; }
-  .navbar a { display: block; padding: 10px 0; }
   .nav-list { display: none; flex-direction: column; background: black; position: absolute; top: 50px; right: 20px; width: 200px; }
   .menu-toggle { display: block; }
 }
