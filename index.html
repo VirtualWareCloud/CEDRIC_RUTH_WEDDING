@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cedric & Ruth - Royal Wedding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <img src="icons/share.png" id="shareBtn" class="share-icon" alt="Share" />
+    <nav class="navbar">
+      <div class="menu-toggle" id="hamburger">&#9776;</div>
+      <ul class="nav-list" id="navLinks">
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#details">Details</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+      </ul>
+    </nav>
+    <div class="hero-text">
+      <h1>Cedric & Ruth</h1>
+      <p>We're Getting Married!</p>
+    </div>
+  </header>
+
+  <section id="story" class="section">
+    <h2>Our Story</h2>
+    <p>This royal romance began on a beach in Mauritius...</p>
+  </section>
+
+  <section id="details" class="section">
+    <h2>Wedding Details</h2>
+    <p><strong>Date:</strong> October 18, 2025<br/>
+    <strong>Time:</strong> 2:00 PM<br/>
+    <strong>Venue:</strong> Seaside Garden Villa, Mauritius</p>
+  </section>
+
+  <section id="gallery" class="section">
+    <h2>Gallery</h2>
+    <div id="galleryContainer" class="slideshow-container"></div>
+    <script src="js/gallery.js"></script>
+  </section>
+
+  <section id="rsvp" class="section rsvp-section">
+    <h2>RSVP</h2>
+    <form id="rsvpForm">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="whatsapp" placeholder="WhatsApp Number" required />
+      <select name="attendance">
+        <option value="">Will you attend?</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      <textarea name="message" placeholder="Any message or dietary info?"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p>Contact Ruth: <a href="mailto:phaahlaruth@gmail.com">phaahlaruth@gmail.com</a> |
+    <a href="https://wa.me/27829627848" target="_blank">WhatsApp: 0829627848</a></p>
+    <p>© 2025 Cedric & Ruth</p>
+  </footer>
+</body>
+</html>
