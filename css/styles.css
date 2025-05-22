@@ -25,6 +25,47 @@ body {
   object-fit: contain;
 }
 
+/* Share label under icon */
+.share-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.share-text {
+  font-size: 0.7rem;
+  color: gold;
+  margin-top: 2px;
+}
+
+/* Hamburger dropdown override */
+.navbar {
+  background: #000;
+  text-align: center;
+}
+.nav-list {
+  display: none;
+  flex-direction: column;
+  text-align: left;
+  background: #000;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  padding: 10px;
+  border: 1px solid gold;
+  z-index: 999;
+}
+.nav-list.open {
+  display: flex;
+}
+.nav-list li {
+  margin: 10px 0;
+}
+.nav-list a {
+  color: gold;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 /* Hero Section */
 .hero-carousel {
   position: relative;
@@ -61,27 +102,21 @@ body {
   text-shadow: 0 0 5px rgba(0,0,0,0.6);
 }
 
-/* Nav Menu */
-.navbar {
-  background: #000;
-  text-align: center;
+/* Animated Gold/Silver Separator */
+.gold-separator {
+  height: 5px;
+  background: linear-gradient(90deg, gold, white, silver, gold);
+  background-size: 200% 100%;
+  animation: sparkleSlide 3s linear infinite, sparkleGlow 1s ease-in-out infinite;
+  margin: 0;
 }
-.nav-list {
-  display: none;
-  flex-direction: column;
-  text-align: center;
-  background: #000;
+@keyframes sparkleSlide {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
-.nav-list.open {
-  display: flex;
-}
-.nav-list li {
-  padding: 10px;
-}
-.nav-list a {
-  color: gold;
-  text-decoration: none;
-  font-weight: bold;
+@keyframes sparkleGlow {
+  0%, 100% { filter: brightness(1.2); }
+  50% { filter: brightness(2.5); }
 }
 
 /* Sections */
@@ -108,7 +143,7 @@ body {
   line-height: 1.6;
 }
 
-/* Gallery */
+/* Gallery Section */
 .gallery-slider {
   position: relative;
   display: flex;
@@ -148,7 +183,7 @@ body {
   right: 10px;
 }
 
-/* RSVP */
+/* RSVP Section */
 .rsvp-section-modern form {
   width: 100%;
   display: flex;
@@ -206,61 +241,12 @@ body {
   transform: scale(1.2);
 }
 
-/* Responsive */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
   .hero-text {
     font-size: 1.2rem;
   }
+  .section-container {
+    padding: 0 10px;
+  }
 }
-/* Share label under icon */
-.share-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.share-text {
-  font-size: 0.7rem;
-  color: gold;
-  margin-top: 2px;
-}
-
-/* Hamburger dropdown override (already partly present) */
-.nav-list {
-  display: none;
-  flex-direction: column;
-  text-align: left;
-  background: #000;
-  position: absolute;
-  top: 60px;
-  right: 10px;
-  padding: 10px;
-  border: 1px solid gold;
-  z-index: 999;
-}
-.nav-list.open {
-  display: flex;
-}
-.nav-list li {
-  margin: 10px 0;
-}
-
-.gold-separator {
-  height: 5px;
-  background: linear-gradient(90deg, gold, white, silver, gold);
-  background-size: 200% 100%;
-  animation: sparkleSlide 3s linear infinite, sparkleGlow 1s ease-in-out infinite;
-  position: relative;
-  overflow: hidden;
-  border: none;
-}
-
-@keyframes sparkleSlide {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-@keyframes sparkleGlow {
-  0%, 100% { filter: brightness(1.2); }
-  50% { filter: brightness(2.5); }
-}
-
