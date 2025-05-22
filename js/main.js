@@ -81,7 +81,7 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
   const animatedTitle = document.getElementById("animatedTitle");
   const rsvpBtn = document.getElementById("rsvpHeroBtn");
   if (animatedTitle) {
-    const titleText = "Cedric & Ruth\nWe're Getting Married";
+    const titleText = "Cedric & Ruth\n Are Getting Married";
     setTimeout(() => {
       animatedTitle.style.opacity = 1;
       const chars = titleText.split('');
@@ -102,7 +102,7 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
     setInterval(() => {
       heroStep++;
       if (heroStep === 2 && animatedTitle) {
-        animatedTitle.style.transition = 'opacity 2s ease';
+        animatedTitle.style.transition = 'opacity 3s ease';
         animatedTitle.style.opacity = 0;
       }
     }, 4000);
