@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cedric & Ruth Wedding</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/main.js"></script>
 </head>
@@ -22,10 +22,10 @@
   <!-- Navigation -->
   <nav class="navbar">
     <ul class="nav-list" id="navLinks">
-      <li><a href="#story">Our Story</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#rsvp">RSVP</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="details.html">Details & Venue</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="rsvp.html">RSVP</a></li>
     </ul>
   </nav>
 
@@ -37,78 +37,13 @@
       <img src="images/hero3.jpg" class="hero-img" />
       <img src="images/hero4.jpg" class="hero-img" />
       <img src="images/hero5.jpg" class="hero-img" />
-      <img src="images/hero6.jpg" class="hero-img" />
-      <img src="images/hero7.jpg" class="hero-img" />
     </div>
-    <div class="hero-text">
-      <h1>Cedric & Ruth</h1>
-      <p>We're Getting Married!</p>
-    </div>
-  </section>
 
-  <div class="gold-separator"></div>
+    <!-- Animated Title -->
+    <div id="animatedTitle" class="animated-title"></div>
 
-  <!-- Story -->
-  <section id="story" class="section">
-    <div class="section-container">
-      <h2>Our Story</h2>
-      <p>This royal romance began on a beach in Mauritius...</p>
-    </div>
-  </section>
-
-  <div class="gold-separator"></div>
-
-  <!-- Details -->
-  <section id="details" class="section">
-    <div class="section-container">
-      <h2>Wedding Details</h2>
-      <p><strong>Date:</strong> October 18, 2025<br/>
-      <strong>Time:</strong> 2:00 PM<br/>
-      <strong>Venue:</strong> Seaside Garden Villa, Mauritius</p>
-    </div>
-  </section>
-
-  <div class="gold-separator"></div>
-
-  <!-- Gallery -->
-  <section id="gallery" class="section">
-    <div class="section-container">
-      <h2>Gallery</h2>
-      <div class="gallery-slider">
-        <button class="gallery-nav left">❮</button>
-        <div class="gallery-frame">
-          <img src="images/gallery1.jpg" class="gallery-img" />
-          <img src="images/gallery2.jpg" class="gallery-img" />
-          <img src="images/gallery3.jpg" class="gallery-img" />
-        </div>
-        <button class="gallery-nav right">❯</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="gold-separator"></div>
-
-  <!-- RSVP -->
-  <section id="rsvp" class="section rsvp-section-modern">
-    <div class="section-container">
-      <h2>RSVP</h2>
-      <form id="rsvpForm">
-        <div class="rsvp-grid">
-          <input type="text" id="rsvpName" placeholder="Your Name" required />
-          <input type="email" id="rsvpEmail" placeholder="Your Email" required />
-          <input type="text" id="rsvpWhatsapp" placeholder="WhatsApp Number" required />
-          <select id="rsvpAttendance" required>
-            <option value="">Will you attend?</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-          <textarea id="rsvpMessage" placeholder="Any message or dietary info?"></textarea>
-          <div class="rsvp-submit-wrapper">
-            <button type="button" onclick="sendToWhatsApp()">Submit</button>
-          </div>
-        </div>
-      </form>
-    </div>
+    <!-- Persistent RSVP Button -->
+    <button id="rsvpHeroBtn" class="rsvp-hero-btn" onclick="window.location.href='rsvp.html'">RSVP</button>
   </section>
 
   <div class="gold-separator"></div>
@@ -123,24 +58,16 @@
         <a href="https://wa.me/27829627848" target="_blank" class="cta-icon" aria-label="WhatsApp">
           <img src="icons/whatsapp.svg" alt="WhatsApp" />
         </a>
+        <a href="https://facebook.com" target="_blank" class="cta-icon" aria-label="Facebook">
+          <img src="icons/facebook.svg" alt="Facebook" />
+        </a>
+        <a href="https://instagram.com" target="_blank" class="cta-icon" aria-label="Instagram">
+          <img src="icons/instagram.svg" alt="Instagram" />
+        </a>
       </div>
       <p>© 2025 Cedric & Ruth</p>
     </div>
   </footer>
-
-  <script>
-    function sendToWhatsApp() {
-      const name = document.getElementById('rsvpName').value;
-      const email = document.getElementById('rsvpEmail').value;
-      const whatsapp = document.getElementById('rsvpWhatsapp').value;
-      const attendance = document.getElementById('rsvpAttendance').value;
-      const message = document.getElementById('rsvpMessage').value;
-
-      const fullMessage = `RSVP for Wedding:%0AName: ${name}%0AEmail: ${email}%0AWhatsApp: ${whatsapp}%0AAttending: ${attendance}%0AMessage: ${message}`;
-      const link = `https://wa.me/27829627848?text=${encodeURIComponent(fullMessage)}`;
-      window.open(link, '_blank');
-    }
-  </script>
 
 </body>
 </html>
