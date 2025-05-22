@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     heroImgs[heroIndex].classList.add('active');
     heroIndex = (heroIndex + 1) % heroImgs.length;
   }
-  setInterval(rotateHeroImages, 4000);
-  rotateHeroImages();
 
   // Gallery
   const galleryImgs = document.querySelectorAll('.gallery-img');
@@ -77,31 +75,52 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
     }
   }
 
-  // Hero Animated Title
+  // Hero Animated Title — Bonus: Structured per line, centered
   const animatedTitle = document.getElementById("animatedTitle");
   const rsvpBtn = document.getElementById("rsvpHeroBtn");
   if (animatedTitle) {
-    const titleText = "Cedric & Ruth\nAre\nGetting Married";
+    const lines = [
+      "Cedric & Ruth",
+      "Are",
+      "Getting Married"
+    ];
+
     setTimeout(() => {
       animatedTitle.style.opacity = 1;
-      const chars = titleText.split('');
-      chars.forEach((char, i) => {
-        const span = document.createElement('span');
-        span.innerHTML = char === '\n' ? '<br>' : char;
-        animatedTitle.appendChild(span);
-        setTimeout(() => {
-          span.style.opacity = 1;
-        }, i * 80);
+      lines.forEach((lineText, i) => {
+        const line = document.createElement('div');
+        line.classList.add('animated-line');
+        if (lineText.trim() === 'Are') {
+          line.style.marginLeft = '1.5rem'; // center shift
+        }
+        [...lineText].forEach((char, j) => {
+          const span = document.createElement('span');
+          span.textContent = char;
+          span.style.opacity = 0;
+          span.style.transition = 'opacity 0.4s ease-in-out';
+          line.appendChild(span);
+          setTimeout(() => {
+            span.style.opacity = 1;
+          }, (i * 500) + (j * 80)); // staggered
+        });
+        animatedTitle.appendChild(line);
       });
+
       setTimeout(() => {
         if (rsvpBtn) rsvpBtn.classList.add('visible');
-      }, chars.length * 80 + 1000);
+      }, lines.flatMap(line => [...line]).length * 80 + 1000);
     }, 3000);
+
+    // Delay starting hero carousel
+    setTimeout(() => {
+      rotateHeroImages();
+      setInterval(rotateHeroImages, 4000);
+    }, 3000 + lines.flatMap(line => [...line]).length * 80 + 1500);
 
     let heroStep = 0;
     setInterval(() => {
       heroStep++;
-      if (heroStep === 2 && animatedTitle) {
+      if (heroStep === 1 && animatedTitle) {
         animatedTitle.style.transition = 'opacity 3s ease';
         animatedTitle.style.opacity = 0;
       }
