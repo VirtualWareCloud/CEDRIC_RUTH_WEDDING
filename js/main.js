@@ -29,11 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
     showGalleryImage(galleryIndex);
   }
 
-  // Share Button
-const shareBtn = document.getElementById('shareBtn');
-if (shareBtn) {
-  shareBtn.addEventListener('click', () => {
-    const message = `💍✨ You're Invited! ✨💍
+  // Share Button with Web Share API and fallback
+  const shareBtn = document.getElementById('shareBtn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', () => {
+      const message = `💍✨ You're Invited! ✨💍
 Join us as we celebrate love, laughter, and happily ever after.
 We're thrilled to announce — Cedric & Ruth are getting married! 💛
 
@@ -42,21 +42,19 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
 
 💫 Let the countdown to forever begin! 💫`;
 
-    // ✅ Use Web Share API if available
-    if (navigator.share) {
-      navigator.share({
-        title: "Cedric & Ruth Wedding",
-        text: message,
-        url: "https://cedric-ruth-wedding.vercel.app"
-      }).catch((err) => console.error("Share failed:", err));
-    } else {
-      // ❌ Fallback to WhatsApp
-      const encoded = encodeURIComponent(message);
-      const waURL = `https://wa.me/?text=${encoded}`;
-      window.open(waURL, '_blank');
-    }
-  });
-}
+      if (navigator.share) {
+        navigator.share({
+          title: "Cedric & Ruth Wedding",
+          text: message,
+          url: "https://cedric-ruth-wedding.vercel.app"
+        }).catch((err) => console.error("Share failed:", err));
+      } else {
+        const encoded = encodeURIComponent(message);
+        const waURL = `https://wa.me/?text=${encoded}`;
+        window.open(waURL, '_blank');
+      }
+    });
+  }
 
   // Hamburger Menu
   const hamburger = document.getElementById('hamburger');
@@ -67,7 +65,7 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
     });
   }
 
-  // RSVP Button Send
+  // RSVP Form Submit to WhatsApp
   const rsvpForm = document.getElementById('rsvpForm');
   if (rsvpForm) {
     window.sendToWhatsApp = function () {
@@ -84,10 +82,10 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
       window.open(link, '_blank');
 
       alert('Thank you for your RSVP! 💛 Your response has been sent to Ruth.');
-    }
+    };
   }
 
-  // Hero Animated Title — Bonus: Structured per line, centered
+  // Animated Hero Title
   const animatedTitle = document.getElementById("animatedTitle");
   const rsvpBtn = document.getElementById("rsvpHeroBtn");
   if (animatedTitle) {
@@ -102,9 +100,7 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
       lines.forEach((lineText, i) => {
         const line = document.createElement('div');
         line.classList.add('animated-line');
-        if (lineText.trim() === 'Are') {
-          line.style.marginLeft = '1.5rem'; // center shift
-        }
+        line.style.textAlign = 'center'; // Center all lines
         [...lineText].forEach((char, j) => {
           const span = document.createElement('span');
           span.textContent = char;
@@ -123,7 +119,7 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
       }, lines.flatMap(line => [...line]).length * 80 + 1000);
     }, 3000);
 
-    // Delay starting hero carousel
+    // ⏳ Delay Hero Image Rotation until text and button appear
     setTimeout(() => {
       rotateHeroImages();
       setInterval(rotateHeroImages, 4000);
