@@ -28,18 +28,23 @@ document.querySelector('.gallery-nav.right').addEventListener('click', () => {
 });
 showGalleryImage(galleryIndex);
 
-// Share
-document.getElementById('shareBtn').addEventListener('click', async () => {
-  if (navigator.share) {
-    await navigator.share({
-      title: 'Cedric & Ruth Royal Wedding',
-      text: 'Celebrate our big day with us!',
-      url: window.location.href
-    });
-  } else {
-    alert('Sharing not supported on this device.');
-  }
+// Share button
+// Share via WhatsApp
+document.getElementById('shareBtn').addEventListener('click', () => {
+  const message = `💍✨ You're Invited! ✨💍
+Join us as we celebrate love, laughter, and happily ever after.
+We're thrilled to announce — Cedric & Ruth are getting married! 💛
+
+📅 View the details, RSVP, and celebrate with us here:
+👉 https://cedric-ruth-wedding.vercel.app
+
+💫 Let the countdown to forever begin! 💫`;
+
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
+  window.open(whatsappURL, '_blank');
 });
+
 
 // Hamburger
 document.getElementById('hamburger').addEventListener('click', () => {
