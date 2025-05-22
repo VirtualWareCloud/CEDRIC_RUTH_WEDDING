@@ -51,3 +51,26 @@ document.getElementById('hamburger').addEventListener('click', () => {
   const nav = document.getElementById('navLinks');
   nav.classList.toggle('open');
 });
+
+// ✅ Place this after the hamburger menu toggle
+function sendToWhatsApp() {
+  const name = document.getElementById('rsvpName').value;
+  const email = document.getElementById('rsvpEmail').value;
+  const whatsapp = document.getElementById('rsvpWhatsapp').value;
+  const attendance = document.getElementById('rsvpAttendance').value;
+  const message = document.getElementById('rsvpMessage').value;
+
+  const fullMessage = `🎉 *New Wedding RSVP* 🎉
+Name: ${name}
+Email: ${email}
+WhatsApp: ${whatsapp}
+Attending: ${attendance}
+Message: ${message}`;
+
+  const encoded = encodeURIComponent(fullMessage);
+  const link = `https://wa.me/27829627848?text=${encoded}`;
+  window.open(link, '_blank');
+
+  alert('Thank you for your RSVP! We’ll see you there 💛');
+}
+
