@@ -128,7 +128,7 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
     let heroStep = 0;
     setInterval(() => {
       heroStep++;
-      if (heroStep === 1 && animatedTitle) {
+      if (heroStep === 3 && animatedTitle) {
         animatedTitle.style.transition = 'opacity 3s ease';
         animatedTitle.style.opacity = 0;
       }
