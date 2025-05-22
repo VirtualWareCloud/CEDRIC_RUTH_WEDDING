@@ -30,10 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Share Button
-  const shareBtn = document.getElementById('shareBtn');
-  if (shareBtn) {
-    shareBtn.addEventListener('click', () => {
-      const message = `💍✨ You're Invited! ✨💍
+const shareBtn = document.getElementById('shareBtn');
+if (shareBtn) {
+  shareBtn.addEventListener('click', () => {
+    const message = `💍✨ You're Invited! ✨💍
 Join us as we celebrate love, laughter, and happily ever after.
 We're thrilled to announce — Cedric & Ruth are getting married! 💛
 
@@ -41,10 +41,22 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
 👉 https://cedric-ruth-wedding.vercel.app
 
 💫 Let the countdown to forever begin! 💫`;
-      const encodedMessage = encodeURIComponent(message);
-      window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
-    });
-  }
+
+    // ✅ Use Web Share API if available
+    if (navigator.share) {
+      navigator.share({
+        title: "Cedric & Ruth Wedding",
+        text: message,
+        url: "https://cedric-ruth-wedding.vercel.app"
+      }).catch((err) => console.error("Share failed:", err));
+    } else {
+      // ❌ Fallback to WhatsApp
+      const encoded = encodeURIComponent(message);
+      const waURL = `https://wa.me/?text=${encoded}`;
+      window.open(waURL, '_blank');
+    }
+  });
+}
 
   // Hamburger Menu
   const hamburger = document.getElementById('hamburger');
