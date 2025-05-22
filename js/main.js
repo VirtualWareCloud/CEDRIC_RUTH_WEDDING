@@ -29,9 +29,11 @@ document.querySelector('.gallery-nav.right').addEventListener('click', () => {
 showGalleryImage(galleryIndex);
 
 // Share button
-// Share via WhatsApp
-document.getElementById('shareBtn').addEventListener('click', () => {
-  const message = `💍✨ You're Invited! ✨💍
+document.addEventListener("DOMContentLoaded", () => {
+  const shareBtn = document.getElementById('shareBtn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', () => {
+      const message = `💍✨ You're Invited! ✨💍
 Join us as we celebrate love, laughter, and happily ever after.
 We're thrilled to announce — Cedric & Ruth are getting married! 💛
 
@@ -40,10 +42,13 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
 
 💫 Let the countdown to forever begin! 💫`;
 
-  const encodedMessage = encodeURIComponent(message);
-  const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
-  window.open(whatsappURL, '_blank');
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
+      window.open(whatsappURL, '_blank');
+    });
+  }
 });
+
 
 
 // Hamburger
