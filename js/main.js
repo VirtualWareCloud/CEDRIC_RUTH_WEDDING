@@ -77,3 +77,39 @@ Sent via: https://cedric-ruth-wedding.vercel.app`;
 
   alert('Thank you for your RSVP! 💛 Your response has been sent to Ruth.');
 }
+// Hero Title Text Animation (only on index.html)
+if (document.getElementById('animatedTitle')) {
+  const titleText = "Cedric & Ruth\nWe're Getting Married";
+  const animatedTitle = document.getElementById("animatedTitle");
+  const rsvpBtn = document.getElementById("rsvpHeroBtn");
+
+  function animateTextLetterByLetter(text, container, delay = 3000) {
+    setTimeout(() => {
+      container.style.opacity = 1;
+      const chars = text.split('');
+      chars.forEach((char, i) => {
+        const span = document.createElement('span');
+        span.textContent = char === '\n' ? '\n' : char;
+        container.appendChild(span);
+        setTimeout(() => {
+          span.style.opacity = 1;
+        }, i * 80);
+      });
+      setTimeout(() => {
+        if (rsvpBtn) rsvpBtn.classList.add('visible');
+      }, chars.length * 80 + 1000);
+    }, delay);
+  }
+
+  let heroStep = 0;
+  setInterval(() => {
+    heroStep++;
+    if (heroStep === 2 && animatedTitle) {
+      animatedTitle.style.transition = 'opacity 2s ease';
+      animatedTitle.style.opacity = 0;
+    }
+  }, 4000);
+
+  animateTextLetterByLetter(titleText, animatedTitle);
+}
+
