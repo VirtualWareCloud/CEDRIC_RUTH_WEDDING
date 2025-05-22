@@ -89,7 +89,7 @@ if (document.getElementById('animatedTitle')) {
       const chars = text.split('');
       chars.forEach((char, i) => {
         const span = document.createElement('span');
-        span.textContent = char === '\n' ? '\n' : char;
+        span.innerHTML = char === '\n' ? '<br>' : char;
         container.appendChild(span);
         setTimeout(() => {
           span.style.opacity = 1;
