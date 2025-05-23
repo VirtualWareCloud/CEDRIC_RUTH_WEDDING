@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Hero Carousel
+  // HERO CAROUSEL (only rotates after animated title is done)
   const heroImgs = document.querySelectorAll('.hero-img');
   let heroIndex = 0;
   function rotateHeroImages() {
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     heroIndex = (heroIndex + 1) % heroImgs.length;
   }
 
-  // Gallery
+  // GALLERY SECTION
   const galleryImgs = document.querySelectorAll('.gallery-img');
   let galleryIndex = 0;
   function showGalleryImage(index) {
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showGalleryImage(galleryIndex);
   }
 
-  // Share Button with Web Share API and fallback
+  // SHARE BUTTON (Web Share API with WhatsApp fallback)
   const shareBtn = document.getElementById('shareBtn');
   if (shareBtn) {
     shareBtn.addEventListener('click', () => {
@@ -56,7 +56,7 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
     });
   }
 
-  // Hamburger Menu
+  // HAMBURGER MENU (toggle open on click)
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
   if (hamburger && navLinks) {
@@ -65,7 +65,7 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
     });
   }
 
-  // RSVP Form Submit to WhatsApp
+  // RSVP FORM (submit to WhatsApp)
   const rsvpForm = document.getElementById('rsvpForm');
   if (rsvpForm) {
     window.sendToWhatsApp = function () {
@@ -85,7 +85,7 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
     };
   }
 
-  // Animated Hero Title
+  // HERO ANIMATED TITLE (sequential letter animation, center, fade out after 4th image)
   const animatedTitle = document.getElementById("animatedTitle");
   const rsvpBtn = document.getElementById("rsvpHeroBtn");
   if (animatedTitle) {
@@ -100,7 +100,8 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
       lines.forEach((lineText, i) => {
         const line = document.createElement('div');
         line.classList.add('animated-line');
-        line.style.textAlign = 'center'; // Center all lines
+        line.style.textAlign = 'center';
+        // You can further adjust with margin, font-size, etc for extra "Are" centering
         [...lineText].forEach((char, j) => {
           const span = document.createElement('span');
           span.textContent = char;
@@ -119,7 +120,7 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
       }, lines.flatMap(line => [...line]).length * 80 + 1000);
     }, 3000);
 
-    // ⏳ Delay Hero Image Rotation until text and button appear
+    // Delay Hero Image Rotation until text and button appear
     setTimeout(() => {
       rotateHeroImages();
       setInterval(rotateHeroImages, 4000);
@@ -128,7 +129,7 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
     let heroStep = 0;
     setInterval(() => {
       heroStep++;
-      if (heroStep === 3 && animatedTitle) {
+      if (heroStep === 3 && animatedTitle) { // fade after 4th image (index 3)
         animatedTitle.style.transition = 'opacity 3s ease';
         animatedTitle.style.opacity = 0;
       }
