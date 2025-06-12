@@ -10,6 +10,68 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/main.js"></script>
+  <style>
+    #details h2 {
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    #details p {
+      background: linear-gradient(to right, #fffbe6, #fff1d6);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    #details p:hover {
+      transform: scale(1.02);
+    }
+
+    .venue-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .venue-container img {
+      width: 100%;
+      display: block;
+      filter: brightness(95%);
+    }
+
+    .venue-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: gold;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .venue-button:hover {
+      background: #d4af37;
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .venue-button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -55,11 +117,10 @@
         and beautifully curated interiors — the perfect setting for an unforgettable wedding experience.
       </p>
 
-      <img src="images/venue_image.jpg" alt="Sandstone House Wedding Venue" style="width:100%; max-width:800px; border-radius:10px; margin-top:20px;" />
-      
-      <p style="margin-top:20px;">
-        For more about the venue, visit: <a href="https://sandstone-house.com" target="_blank" rel="noopener noreferrer">sandstone-house.com</a>
-      </p>
+      <div class="venue-container">
+        <img src="images/venue_image.jpg" alt="Sandstone House Wedding Venue" />
+        <a href="https://sandstone-house.com" target="_blank" rel="noopener noreferrer" class="venue-button">View Venue</a>
+      </div>
     </div>
   </section>
 
