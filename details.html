@@ -1,18 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Join us in celebrating the wedding of Cedric & Ruth. Discover the venue, RSVP, and view the gallery.">
   <meta name="author" content="Cedric & Ruth Wedding Site">
   <title>Cedric & Ruth Wedding</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/main.js"></script>
+  <style>
+    .nav-list {
+      display: none;
+      flex-direction: column;
+      background-color: #000;
+      position: absolute;
+      top: 60px;
+      right: 10px;
+      padding: 10px;
+      border: 1px solid gold;
+      z-index: 999;
+    }
+    .nav-list.active {
+      display: flex;
+    }
+    .nav-list li {
+      margin: 10px 0;
+    }
+    .nav-list a {
+      color: gold;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    @media (min-width: 768px) {
+      .nav-list {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        border: none;
+        background: transparent;
+        justify-content: center;
+      }
+      .nav-list li {
+        margin: 0 15px;
+      }
+    }
+  </style>
 </head>
-<div class="gold-separator"></div>
 <body>
+
+  <!-- Decorative Separator -->
+  <div class="gold-separator"></div>
 
   <!-- Header -->
   <div class="top-header">
@@ -20,19 +59,16 @@
       <img src="icons/share.png" alt="Share" id="shareBtn" class="share-icon" />
       <span class="share-text">share</span>
     </div>
-  <!-- Logo in center -->
- <div class="header-logo">
-  <a href="index.html">
-    <img src="images/logo.png" alt="C&R Logo" class="logo-img" />
-  </a>
-</div>
-
-   <!-- Hamburger Munu --> 
+    <div class="header-logo">
+      <a href="index.html">
+        <img src="images/logo.png" alt="C&R Logo" class="logo-img" />
+      </a>
+    </div>
     <img src="icons/menu.svg" alt="Menu" id="hamburger" class="menu-icon" />
   </div>
 
   <!-- Navigation -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main Navigation">
     <ul class="nav-list" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="details.html">Details & Venue</a></li>
@@ -40,7 +76,9 @@
       <li><a href="rsvp.html">RSVP</a></li>
     </ul>
   </nav>
-<div class="gold-separator"></div>
+
+  <!-- Decorative Separator -->
+  <div class="gold-separator"></div>
 
   <!-- Details Section -->
   <section id="details" class="section">
@@ -56,14 +94,17 @@
         and beautifully curated interiors — the perfect setting for an unforgettable wedding experience.
       </p>
 
-      <img src="images/venue_image.jpg" alt="Sandstone House Wedding Venue" style="width:100%; max-width:800px; border-radius:10px; margin-top:20px;" />
-      
+      <img src="images/venue_image.jpg" alt="Sandstone House Wedding Venue"
+           style="width:100%; max-width:800px; border-radius:10px; margin-top:20px;" />
+
       <p style="margin-top:20px;">
-        For more about the venue, visit: <a href="https://sandstone-house.com" target="_blank">sandstone-house.com</a>
+        For more about the venue, visit:
+        <a href="https://sandstone-house.com" target="_blank" rel="noopener noreferrer">sandstone-house.com</a>
       </p>
     </div>
   </section>
 
+  <!-- Decorative Separator -->
   <div class="gold-separator"></div>
 
   <!-- Footer -->
@@ -86,6 +127,13 @@
       <p>© 2025 Cedric & Ruth</p>
     </div>
   </footer>
+
+  <!-- Hamburger Menu Script -->
+  <script>
+    document.getElementById('hamburger').addEventListener('click', function () {
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+  </script>
 
 </body>
 </html>
