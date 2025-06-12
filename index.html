@@ -142,3 +142,17 @@
 
 </body>
 </html>
+<!-- Paste this at the bottom of your <body>, before </body> -->
+<script>
+  // Mobile menu toggle
+  document.getElementById('hamburger').addEventListener('click', function () {
+    document.getElementById('navLinks').classList.toggle('active');
+  });
+
+  // Optional: close the menu on link click (for single-page UX)
+  document.querySelectorAll('#navLinks a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('active');
+    });
+  });
+</script>
