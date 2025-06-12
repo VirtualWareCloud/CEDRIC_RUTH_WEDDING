@@ -4,28 +4,29 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cedric & Ruth Wedding</title>
+  <meta name="description" content="Wedding gallery of Cedric & Ruth — capturing love, moments, and joy.">
+  <meta name="author" content="Cedric & Ruth Wedding Site">
+  <title>Gallery | Cedric & Ruth Wedding</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/main.js"></script>
 </head>
 
 <body>
-<div class="gold-separator"></div>
+
+  <div class="gold-separator"></div>
+
   <!-- Header -->
   <div class="top-header">
     <div class="share-container">
       <img src="icons/share.png" alt="Share" id="shareBtn" class="share-icon" />
       <span class="share-text">share</span>
     </div>
-  <!-- Logo in center -->
-<div class="header-logo">
-  <a href="index.html">
-    <img src="images/logo.png" alt="C&R Logo" class="logo-img" />
-  </a>
-</div>
-
-   <!-- Hamburger Munu --> 
+    <div class="header-logo">
+      <a href="index.html">
+        <img src="images/logo.png" alt="C&R Logo" class="logo-img" />
+      </a>
+    </div>
     <img src="icons/menu.svg" alt="Menu" id="hamburger" class="menu-icon" />
   </div>
 
@@ -38,7 +39,8 @@
       <li><a href="rsvp.html">RSVP</a></li>
     </ul>
   </nav>
-<div class="gold-separator"></div>
+
+  <div class="gold-separator"></div>
 
   <!-- Gallery Section -->
   <section id="gallery" class="section">
@@ -82,7 +84,14 @@
   <script>
     // Hamburger Toggle
     document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+
+    // Auto-close nav on link click
+    document.querySelectorAll('#navLinks a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+      });
     });
 
     // Gallery Navigation
@@ -106,5 +115,6 @@
 
     showGalleryImage(galleryIndex);
   </script>
+
 </body>
 </html>
