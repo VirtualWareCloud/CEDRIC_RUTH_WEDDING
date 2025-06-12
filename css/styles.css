@@ -52,7 +52,7 @@ body {
   border: 1px solid gold;
   z-index: 999;
 }
-.nav-list.open {
+.nav-list.active {
   display: flex;
 }
 .nav-list li {
