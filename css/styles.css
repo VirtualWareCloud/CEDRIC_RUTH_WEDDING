@@ -64,6 +64,26 @@ body {
   font-weight: bold;
 }
 
+/* Desktop nav layout */
+@media (min-width: 768px) {
+  .nav-list {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    background: transparent;
+    border: none;
+    justify-content: center;
+  }
+
+  .nav-list li {
+    margin: 0 15px;
+  }
+
+  #hamburger {
+    display: none;
+  }
+}
+
 /* Hero Section */
 .hero-carousel {
   position: relative;
@@ -275,7 +295,7 @@ body {
   transform: scale(1.2);
 }
 
-/* Responsive */
+/* Mobile Tweaks */
 @media (max-width: 768px) {
   .hero-text {
     font-size: 1.2rem;
@@ -284,6 +304,7 @@ body {
     padding: 0 10px;
   }
 }
+
 .header-logo {
   flex-grow: 1;
   display: flex;
