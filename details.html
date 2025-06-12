@@ -22,7 +22,7 @@
       border: 1px solid gold;
       z-index: 999;
     }
-    .nav-list.active {
+    .nav-list.open {
       display: flex;
     }
     .nav-list li {
@@ -44,6 +44,9 @@
       }
       .nav-list li {
         margin: 0 15px;
+      }
+      #hamburger {
+        display: none;
       }
     }
   </style>
@@ -127,13 +130,6 @@
       <p>© 2025 Cedric & Ruth</p>
     </div>
   </footer>
-
-  <!-- Hamburger Menu Script -->
-  <script>
-    document.getElementById('hamburger').addEventListener('click', function () {
-      document.getElementById('navLinks').classList.toggle('active');
-    });
-  </script>
 
 </body>
 </html>
