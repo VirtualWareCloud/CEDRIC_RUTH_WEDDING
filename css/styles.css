@@ -64,24 +64,9 @@ body {
   font-weight: bold;
 }
 
-/* Desktop nav layout */
-@media (min-width: 768px) {
-  .nav-list {
-    display: flex !important;
-    flex-direction: row;
-    position: static;
-    background: transparent;
-    border: none;
-    justify-content: center;
-  }
-
-  .nav-list li {
-    margin: 0 15px;
-  }
-
-  #hamburger {
-    display: none;
-  }
+/* REMOVE Desktop override that hides hamburger */
+#hamburger {
+  display: block;
 }
 
 /* Hero Section */
