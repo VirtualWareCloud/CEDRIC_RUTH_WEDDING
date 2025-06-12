@@ -4,28 +4,61 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cedric & Ruth Wedding</title>
+  <meta name="description" content="RSVP for Cedric & Ruth's special day. Let us know if you’ll join the celebration.">
+  <meta name="author" content="Cedric & Ruth Wedding Site">
+  <title>RSVP | Cedric & Ruth Wedding</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/main.js"></script>
+  <style>
+    /* 3D RSVP Form Enhancements */
+    .rsvp-section-modern {
+      background: linear-gradient(145deg, #fff8e7, #fceabb);
+    }
+    .rsvp-grid {
+      background: #fffdf8;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      border-radius: 15px;
+      padding: 25px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .rsvp-grid:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+    .rsvp-grid input,
+    .rsvp-grid textarea,
+    .rsvp-grid select {
+      background: #fffefc;
+      border: 1px solid #d4af37;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .rsvp-submit-wrapper button {
+      background: linear-gradient(to right, #d4af37, gold);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      font-weight: bold;
+    }
+    .rsvp-submit-wrapper button:hover {
+      background: linear-gradient(to right, gold, #d4af37);
+    }
+  </style>
 </head>
 
 <body>
-<div class="gold-separator"></div>
+
+  <div class="gold-separator"></div>
+
   <!-- Header -->
   <div class="top-header">
     <div class="share-container">
       <img src="icons/share.png" alt="Share" id="shareBtn" class="share-icon" />
       <span class="share-text">share</span>
     </div>
-  <!-- Logo in center -->
-<div class="header-logo">
-  <a href="index.html">
-    <img src="images/logo.png" alt="C&R Logo" class="logo-img" />
-  </a>
-</div>
-
-   <!-- Hamburger Menu --> 
+    <div class="header-logo">
+      <a href="index.html">
+        <img src="images/logo.png" alt="C&R Logo" class="logo-img" />
+      </a>
+    </div>
     <img src="icons/menu.svg" alt="Menu" id="hamburger" class="menu-icon" />
   </div>
 
@@ -38,7 +71,8 @@
       <li><a href="rsvp.html">RSVP</a></li>
     </ul>
   </nav>
-<div class="gold-separator"></div>
+
+  <div class="gold-separator"></div>
 
   <!-- RSVP Section -->
   <section id="rsvp" class="section rsvp-section-modern">
@@ -89,7 +123,14 @@
   <script>
     // Hamburger Toggle
     document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+
+    // Auto-close nav on link click
+    document.querySelectorAll('#navLinks a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+      });
     });
 
     // WhatsApp RSVP Submission
