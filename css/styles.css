@@ -302,3 +302,16 @@ body {
   width: auto;
   object-fit: contain;
 }
+.typewriter-title {
+  position: absolute;
+  top: 28%;
+  width: 100%;
+  text-align: center;
+  font-family: 'Playfair Display SC', serif;
+  color: gold;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  opacity: 1;
+  z-index: 10;
+}
+.typewriter-line { display: block; line-height: 1.8; }
