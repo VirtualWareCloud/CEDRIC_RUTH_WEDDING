@@ -7,13 +7,13 @@
   <title>Cedric & Ruth Wedding</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
+
   <style>
     .hero-carousel {
       position: relative;
       height: 100vh;
       overflow: hidden;
     }
-
     .hero-img, .hero-video {
       position: absolute;
       width: 100%;
@@ -25,29 +25,55 @@
       transition: opacity 1s ease-in-out;
       z-index: 1;
     }
-
     .hero-img.active, .hero-video.active {
       opacity: 1;
       z-index: 2;
     }
-
     .animated-title, .rsvp-hero-btn {
       position: absolute;
       z-index: 3;
     }
-
-    #animatedTitle {
-      top: 20%;
+    #typewriterTitle {
+      top: 18%;
+      left: 0;
+      right: 0;
       width: 100%;
       text-align: center;
-      color: white;
-      font-size: 2rem;
+      color: gold;
+      font-family: 'Playfair Display SC', serif;
+      font-size: 2.3rem;
+      letter-spacing: 2px;
+      opacity: 1;
+      position: absolute;
+      z-index: 10;
+      pointer-events: none;
+      line-height: 1.4;
     }
-
+    .typewriter-line {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    .typewriter-line.center {
+      text-align: center;
+      margin-left: 2rem;
+      letter-spacing: 0.35em;
+    }
+    .typewriter-char {
+      display: inline-block;
+      opacity: 0;
+      transition: opacity 0.3s cubic-bezier(.7,0,.3,1);
+      will-change: opacity;
+    }
     .rsvp-hero-btn {
       top: 80%;
       left: 50%;
       transform: translateX(-50%);
+    }
+    .rsvp-hero-btn.visible {
+      opacity: 1 !important;
+      pointer-events: auto;
+      transition: opacity 1.2s cubic-bezier(.7,0,.3,1);
     }
   </style>
 </head>
@@ -91,8 +117,9 @@
   <img src="images/hero4.jpg" class="hero-img" />
   <img src="images/hero5.jpg" class="hero-img" />
 
-  <!-- Animated Title -->
-  <div id="animatedTitle" class="animated-title"></div>
+  <!-- ===== TYPEWRITER ANIMATED TITLE (Independent, as requested) ===== -->
+  <div id="typewriterTitle"></div>
+  <!-- ===== END TYPEWRITER TITLE ===== -->
 
   <!-- Persistent RSVP Button -->
   <button id="rsvpHeroBtn" class="rsvp-hero-btn" onclick="window.location.href='rsvp.html'">RSVP</button>
@@ -121,6 +148,9 @@
   </div>
 </footer>
 
+<!-- =============================
+     HERO SLIDESHOW + MENU TOGGLE
+     ============================= -->
 <script>
   window.addEventListener('load', () => {
     const video = document.getElementById('introVideo');
@@ -130,7 +160,6 @@
     setTimeout(() => {
       video.classList.remove('active');
       images[current].classList.add('active');
-
       setInterval(() => {
         images[current].classList.remove('active');
         current = (current + 1) % images.length;
@@ -138,21 +167,66 @@
       }, 4000);
     }, 3000);
   });
-</script>
 
-</body>
-</html>
-<!-- Paste this at the bottom of your <body>, before </body> -->
-<script>
-  // Mobile menu toggle
+  // Hamburger menu
   document.getElementById('hamburger').addEventListener('click', function () {
     document.getElementById('navLinks').classList.toggle('active');
   });
 
-  // Optional: close the menu on link click (for single-page UX)
+  // Close menu when link clicked
   document.querySelectorAll('#navLinks a').forEach(link => {
     link.addEventListener('click', () => {
       document.getElementById('navLinks').classList.remove('active');
     });
   });
 </script>
+
+<!-- =============================
+     INDEPENDENT TYPEWRITER TITLE
+     ============================= -->
+<script>
+  // Call this to render the animated title anywhere, by id
+  function renderTypewriterTitle(containerId, callbackAfterAllLines) {
+    const lines = [
+      "Cedric & Ruth",
+      "Are",
+      "Getting Married"
+    ];
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = '';
+    let totalDelay = 0;
+
+    lines.forEach((line, i) => {
+      const div = document.createElement('div');
+      div.className = 'typewriter-line' + (i === 1 ? ' center' : '');
+      container.appendChild(div);
+
+      [...line].forEach((char, j) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.className = 'typewriter-char';
+        div.appendChild(span);
+
+        setTimeout(() => { span.style.opacity = 1; }, totalDelay + j * 70 + i * 350);
+      });
+      totalDelay += line.length * 70 + 350;
+    });
+
+    // After all chars, show RSVP button
+    setTimeout(() => {
+      const rsvpBtn = document.getElementById("rsvpHeroBtn");
+      if (rsvpBtn) rsvpBtn.classList.add('visible');
+      if (typeof callbackAfterAllLines === 'function') callbackAfterAllLines();
+    }, totalDelay + 700);
+  }
+
+  // Animate after 2.2s, matches video->image fade
+  setTimeout(() => {
+    renderTypewriterTitle('typewriterTitle');
+  }, 2200);
+</script>
+
+</body>
+</html>
