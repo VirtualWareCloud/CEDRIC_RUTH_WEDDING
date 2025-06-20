@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Registry - Cedric & Ruth</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&display=swap" rel="stylesheet">
+  <script src="main.js" defer></script>
+  <style>
+    .registry-section {
+      padding: 3rem 1.5rem;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .registry-section h1 {
+      font-family: 'Playfair Display SC', serif;
+      font-size: 2.5rem;
+      color: gold;
+      margin-bottom: 1rem;
+    }
+
+    .registry-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #fff;
+      margin-bottom: 2rem;
+    }
+
+    .registry-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .registry-buttons button,
+    .registry-buttons a {
+      background: gold;
+      color: #000;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 2rem;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .registry-buttons button:hover,
+    .registry-buttons a:hover {
+      transform: scale(1.05);
+    }
+
+    /* Popup Styles */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      background: #222;
+      border: 2px solid gold;
+      border-radius: 12px;
+      padding: 2rem;
+      color: white;
+      text-align: left;
+      max-width: 400px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .popup-content h2 {
+      color: gold;
+      margin-bottom: 1rem;
+    }
+
+    .popup-content p {
+      margin-bottom: 0.5rem;
+    }
+
+    .popup-content code {
+      background: #111;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      display: block;
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .popup-content button {
+      background: darkred;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Load Header -->
+  <div id="header-placeholder"></div>
+  <script>
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('header-placeholder').innerHTML = data);
+  </script>
+
+  <!-- Registry Section -->
+  <section class="registry-section">
+    <h1>Wedding Registry</h1>
+    <p>
+      Your presence at our wedding is the greatest gift we could ask for.<br/>
+      However, should you wish to bless us with something more, we kindly invite you to contribute towards our honeymoon or the exciting journey of building our life together.<br/>
+      No amount is too small, and every gesture means the world to us as we begin this beautiful new chapter as husband and wife.
+    </p>
+
+    <div class="registry-buttons">
+      <a href="https://www.paypal.com" target="_blank">Contribute via PayPal</a>
+      <button onclick="document.getElementById('bankPopup').style.display='flex'">View Banking Details</button>
+    </div>
+  </section>
+
+  <!-- Bank Popup -->
+  <div class="popup-overlay" id="bankPopup">
+    <div class="popup-content">
+      <h2>French Banking Details</h2>
+      <p><strong>Bank Name:</strong> Crédit Agricole</p>
+      <p><strong>Account Holder:</strong> Cedric & Ruth Wedding</p>
+      <p><strong>IBAN:</strong> <code>FR76 1234 5678 9012 3456 7890 123</code></p>
+      <p><strong>BIC:</strong> <code>AGRIFRPPXXX</code></p>
+      <button onclick="document.getElementById('bankPopup').style.display='none'">Close</button>
+    </div>
+  </div>
+
+  <!-- Load Footer -->
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+  </script>
+
+</body>
+</html>
