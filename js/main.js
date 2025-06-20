@@ -136,3 +136,29 @@ We're thrilled to announce — Cedric & Ruth are getting married! 💛
     }, 4000);
   }
 });
+// SHARE BUTTON LOGIC
+const shareBtn = document.getElementById("shareBtn");
+
+function fallbackCopyLink() {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    alert("Link copied to clipboard!");
+  }).catch(() => {
+    prompt("Copy the link below:", url);
+  });
+}
+
+if (navigator.share) {
+  shareBtn.addEventListener("click", () => {
+    navigator.share({
+      title: "Cedric & Ruth Wedding",
+      text: "Join us in celebrating the wedding of Cedric & Ruth!",
+      url: window.location.href,
+    }).catch(err => {
+      console.warn("Sharing failed or canceled", err);
+      fallbackCopyLink();
+    });
+  });
+} else {
+  shareBtn.addEventListener("click", fallbackCopyLink);
+}
