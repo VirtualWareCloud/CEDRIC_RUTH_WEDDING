@@ -1,35 +1,15 @@
-<!-- Gold Separator Top -->
-<div class="gold-separator"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Registry – Cedric & Ruth</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-<!-- Header -->
-<div class="top-header">
-  <div class="share-container">
-    <img src="icons/share.png" alt="Share" id="shareBtn" class="share-icon" />
-    <span class="share-text">share</span>
-  </div>
-  <div class="header-logo">
-    <a href="index.html">
-      <img src="images/logo.png" alt="C&R Logo" class="logo-img" />
-    </a>
-  </div>
-  <img src="icons/menu.svg" alt="Menu" id="hamburger" class="menu-icon" />
-</div>
+  <!-- Fonts & Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 
-<!-- Navigation -->
-<nav class="navbar">
-  <ul class="nav-list" id="navLinks">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="details.html">Details & Venue</a></li>
-    <li><a href="gallery.html">Gallery</a></li>
-    <li><a href="rsvp.html">RSVP</a></li>
-    <li><a href="wedding_registry.html">Wedding Registry</a></li>
-    <li><a href="https://www.booking.com/searchresults.en-gb.html?ss=Franschhoek+South+Africa" target="_blank">Book Accommodation</a></li>
-    <li><a href="dress_code.html">Dress Code & Colour Palette</a></li>
-  </ul>
-</nav>
-
-<!-- Gold Separator -->
-<div class="gold-separator"></div>
   <style>
     .registry-section {
       padding: 3rem 1.5rem;
@@ -73,6 +53,7 @@
       box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
       cursor: pointer;
       transition: transform 0.3s ease;
+      text-decoration: none;
     }
 
     .registry-buttons button:hover,
@@ -80,7 +61,6 @@
       transform: scale(1.05);
     }
 
-    /* Popup Styles */
     .popup-overlay {
       display: none;
       position: fixed;
@@ -107,10 +87,6 @@
       margin-bottom: 1rem;
     }
 
-    .popup-content p {
-      margin-bottom: 0.5rem;
-    }
-
     .popup-content code {
       background: #111;
       padding: 0.4rem 0.6rem;
@@ -133,13 +109,35 @@
 
 <body>
 
-  <!-- Load Header -->
-  <div id="header-placeholder"></div>
-  <script>
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('header-placeholder').innerHTML = data);
-  </script>
+  <!-- Header -->
+  <div class="gold-separator"></div>
+
+  <div class="top-header">
+    <div class="share-container">
+      <img src="icons/share.png" alt="Share" id="shareBtn" class="share-icon" />
+      <span class="share-text">share</span>
+    </div>
+    <div class="header-logo">
+      <a href="index.html">
+        <img src="images/logo.png" alt="C&R Logo" class="logo-img" />
+      </a>
+    </div>
+    <img src="icons/menu.svg" alt="Menu" id="hamburger" class="menu-icon" />
+  </div>
+
+  <nav class="navbar">
+    <ul class="nav-list" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="details.html">Details & Venue</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="rsvp.html">RSVP</a></li>
+      <li><a href="wedding_registry.html">Wedding Registry</a></li>
+      <li><a href="https://www.booking.com/searchresults.en-gb.html?ss=Franschhoek+South+Africa" target="_blank">Book Accommodation</a></li>
+      <li><a href="dress_code.html">Dress Code & Colour Palette</a></li>
+    </ul>
+  </nav>
+
+  <div class="gold-separator"></div>
 
   <!-- Registry Section -->
   <section class="registry-section">
@@ -168,12 +166,44 @@
     </div>
   </div>
 
-  <!-- Load Footer -->
+  <!-- Footer -->
   <div id="footer-placeholder"></div>
   <script>
     fetch('footer.html')
       .then(res => res.text())
       .then(data => document.getElementById('footer-placeholder').innerHTML = data);
+  </script>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('active');
+    });
+
+    document.querySelectorAll('#navLinks a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('active');
+      });
+    });
+
+    const shareBtn = document.getElementById("shareBtn");
+    if (navigator.share) {
+      shareBtn.addEventListener("click", async () => {
+        try {
+          await navigator.share({
+            title: "Cedric & Ruth Wedding",
+            text: "Join us in celebrating the wedding of Cedric & Ruth!",
+            url: window.location.href,
+          });
+        } catch (err) {
+          console.error("Share failed:", err.message);
+        }
+      });
+    } else {
+      shareBtn.addEventListener("click", () => {
+        alert("Sharing is not supported on this device. Please copy the link.");
+      });
+    }
   </script>
 
 </body>
