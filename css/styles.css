@@ -315,3 +315,22 @@ body {
   z-index: 10;
 }
 .typewriter-line { display: block; line-height: 1.8; }
+.created-by {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.created-by img {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 4px gold);
+}
+
+.credit-text {
+  color: gold;
+  font-size: 0.9rem;
+  font-family: 'Open Sans', sans-serif;
+}
