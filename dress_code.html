@@ -15,10 +15,12 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
     .gallery-column {
       flex: 1;
       min-width: 280px;
     }
+
     .gallery-column h3 {
       text-align: center;
       font-family: 'Playfair Display SC', serif;
@@ -26,6 +28,7 @@
       font-size: 1.8rem;
       margin-bottom: 20px;
     }
+
     .gallery-item {
       margin-bottom: 20px;
       overflow: hidden;
@@ -33,15 +36,18 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .gallery-item:hover {
       transform: scale(1.03);
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
     }
+
     .gallery-item img {
       width: 100%;
       display: block;
       border-radius: 12px;
     }
+
     .palette-button {
       display: inline-block;
       margin: 50px auto 0;
@@ -57,13 +63,40 @@
       transition: all 0.4s ease-in-out;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
+
     .palette-button:hover {
       background: #d4af37;
       transform: scale(1.05);
     }
+
     .center-button-wrapper {
       text-align: center;
     }
+
+    .small-colour-button-wrapper {
+      text-align: center;
+      margin: 10px 0 30px;
+    }
+
+    .small-colour-button {
+      display: inline-block;
+      padding: 8px 20px;
+      font-size: 0.95rem;
+      color: white;
+      background: linear-gradient(to right, gold, #d4af37);
+      border: none;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .small-colour-button:hover {
+      background: linear-gradient(to right, #d4af37, gold);
+      transform: scale(1.05);
+    }
+
     @media (max-width: 768px) {
       .dress-code-gallery {
         flex-direction: column;
@@ -111,6 +144,10 @@
 <section class="section">
   <div class="section-container">
     <h2>Dress Code Inspiration</h2>
+    <div class="small-colour-button-wrapper">
+      <a href="Colour_Pallette.html" class="small-colour-button">Colours</a>
+    </div>
+
     <div class="dress-code-gallery">
       <!-- Women Column -->
       <div class="gallery-column">
@@ -135,7 +172,7 @@
       </div>
     </div>
 
-    <!-- Link to Colour Palette -->
+    <!-- Bottom Button to Colour Palette -->
     <div class="center-button-wrapper">
       <a href="Colour_Pallette.html" class="palette-button">Explore the Colour Palette</a>
     </div>
@@ -169,20 +206,19 @@
 </footer>
 
 <script>
-  // Hamburger Toggle (works on desktop & mobile)
+  // Hamburger Toggle
   document.getElementById('hamburger').addEventListener('click', () => {
-    const nav = document.getElementById('navLinks');
-    nav.classList.toggle('active');
+    document.getElementById('navLinks').classList.toggle('active');
   });
 
-  // Auto-close menu when clicking a link (for mobile)
+  // Auto-close menu when clicking a link
   document.querySelectorAll('#navLinks a').forEach(link => {
     link.addEventListener('click', () => {
       document.getElementById('navLinks').classList.remove('active');
     });
   });
 
-  // Share Button with Clipboard fallback
+  // Share Button with Fallback
   document.getElementById('shareBtn').addEventListener('click', async () => {
     const shareData = {
       title: 'Cedric & Ruth Wedding',
