@@ -9,6 +9,7 @@
   <title>Gallery | Cedric & Ruth Wedding</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/main.js"></script>
   <style>
     html, body {
       margin: 0;
@@ -75,88 +76,110 @@
       display: none;
     }
   </style>
-  <script defer src="js/main.js"></script>
 </head>
 
 <body>
 
-  <!-- Header -->
-  <div class="top-header">
-    <div class="share-container">
-      <img src="icons/share.png" alt="Share" id="shareBtn" class="share-icon" />
-      <span class="share-text">share</span>
-    </div>
-    <div class="header-logo">
-      <a href="index.html">
-        <img src="images/logo.png" alt="C&R Logo" class="logo-img" />
-      </a>
-    </div>
-    <img src="icons/menu.svg" alt="Menu" id="hamburger" class="menu-icon" />
+<!-- Header -->
+<div class="top-header">
+  <div class="share-container">
+    <img src="icons/share.png" alt="Share" id="shareBtn" class="share-icon" />
+    <span class="share-text">share</span>
   </div>
+  <div class="header-logo">
+    <a href="index.html">
+      <img src="images/logo.png" alt="C&R Logo" class="logo-img" />
+    </a>
+  </div>
+  <img src="icons/menu.svg" alt="Menu" id="hamburger" class="menu-icon" />
+</div>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <ul class="nav-list" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="details.html">Details & Venue</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="rsvp.html">RSVP</a></li>
-    </ul>
-  </nav>
+<!-- Navigation -->
+<nav class="navbar">
+  <ul class="nav-list" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="details.html">Details & Venue</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="rsvp.html">RSVP</a></li>
+    <li><a href="wedding_registry.html">Wedding Registry</a></li>
+    <li><a href="https://www.booking.com/searchresults.en-gb.html?ss=Franschhoek+South+Africa" target="_blank">Book Accommodation</a></li>
+    <li><a href="dress_code.html">Dress Code & Colour Palette</a></li>
+  </ul>
+</nav>
 
-  <!-- Gallery Section -->
-  <section id="gallery" class="section">
-    <div class="gallery-slider">
-      <div class="gallery-frame">
-        <img src="images/gallery1.jpg" class="gallery-img active" alt="Gallery Image 1" />
-        <img src="images/gallery2.jpg" class="gallery-img" alt="Gallery Image 2" />
-        <img src="images/gallery3.jpg" class="gallery-img" alt="Gallery Image 3" />
-        <img src="images/gallery4.jpg" class="gallery-img" alt="Gallery Image 4" />
-        <img src="images/gallery5.jpg" class="gallery-img" alt="Gallery Image 5" />
-        <img src="images/gallery6.jpg" class="gallery-img" alt="Gallery Image 6" />
-        <img src="images/gallery7.jpg" class="gallery-img" alt="Gallery Image 7" />
-        <img src="images/gallery8.jpg" class="gallery-img" alt="Gallery Image 8" />
+<!-- Gallery Section -->
+<section id="gallery" class="section">
+  <div class="gallery-slider">
+    <div class="gallery-frame">
+      <img src="images/gallery1.jpg" class="gallery-img active" alt="Gallery Image 1" />
+      <img src="images/gallery2.jpg" class="gallery-img" alt="Gallery Image 2" />
+      <img src="images/gallery3.jpg" class="gallery-img" alt="Gallery Image 3" />
+      <img src="images/gallery4.jpg" class="gallery-img" alt="Gallery Image 4" />
+      <img src="images/gallery5.jpg" class="gallery-img" alt="Gallery Image 5" />
+      <img src="images/gallery6.jpg" class="gallery-img" alt="Gallery Image 6" />
+      <img src="images/gallery7.jpg" class="gallery-img" alt="Gallery Image 7" />
+      <img src="images/gallery8.jpg" class="gallery-img" alt="Gallery Image 8" />
 
-        <button class="gallery-nav left">❮</button>
-        <button class="gallery-nav right">❯</button>
-      </div>
+      <button class="gallery-nav left">❮</button>
+      <button class="gallery-nav right">❯</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <script>
-    // Hamburger Toggle
-    document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('active');
+<!-- Gallery Script -->
+<script>
+  // Hamburger Toggle
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('active');
+  });
+
+  // Auto-close nav on link click
+  document.querySelectorAll('#navLinks a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('active');
     });
+  });
 
-    // Auto-close nav on link click
-    document.querySelectorAll('#navLinks a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('navLinks').classList.remove('active');
-      });
-    });
-
-    // Gallery Navigation
-    const galleryImgs = document.querySelectorAll('.gallery-img');
-    let galleryIndex = 0;
-
-    function showGalleryImage(index) {
-      galleryImgs.forEach(img => img.classList.remove('active'));
-      galleryImgs[index].classList.add('active');
+  // Share Button with Fallback
+  document.getElementById('shareBtn').addEventListener('click', async () => {
+    const shareData = {
+      title: 'Cedric & Ruth Wedding Gallery',
+      text: 'View our love story in pictures 💖',
+      url: window.location.href
+    };
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(shareData.url);
+        alert('📋 Link copied! Share it manually.');
+      }
+    } catch (err) {
+      alert('Error sharing: ' + err.message);
     }
+  });
 
-    document.querySelector('.gallery-nav.left').addEventListener('click', () => {
-      galleryIndex = (galleryIndex - 1 + galleryImgs.length) % galleryImgs.length;
-      showGalleryImage(galleryIndex);
-    });
+  // Gallery Navigation
+  const galleryImgs = document.querySelectorAll('.gallery-img');
+  let galleryIndex = 0;
 
-    document.querySelector('.gallery-nav.right').addEventListener('click', () => {
-      galleryIndex = (galleryIndex + 1) % galleryImgs.length;
-      showGalleryImage(galleryIndex);
-    });
+  function showGalleryImage(index) {
+    galleryImgs.forEach(img => img.classList.remove('active'));
+    galleryImgs[index].classList.add('active');
+  }
 
+  document.querySelector('.gallery-nav.left').addEventListener('click', () => {
+    galleryIndex = (galleryIndex - 1 + galleryImgs.length) % galleryImgs.length;
     showGalleryImage(galleryIndex);
-  </script>
+  });
+
+  document.querySelector('.gallery-nav.right').addEventListener('click', () => {
+    galleryIndex = (galleryIndex + 1) % galleryImgs.length;
+    showGalleryImage(galleryIndex);
+  });
+
+  showGalleryImage(galleryIndex);
+</script>
 
 </body>
 </html>
