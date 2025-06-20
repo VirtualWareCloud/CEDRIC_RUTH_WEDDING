@@ -5,9 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cedric & Ruth Wedding</title>
+
+  <!-- Fonts and Main Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Open+Sans&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
 
+  <!-- Inline Styles (Hero Carousel & Typewriter Title) -->
   <style>
     .hero-carousel {
       position: relative;
@@ -80,6 +83,7 @@
 </head>
 <body>
 
+<!-- Gold Separator Top -->
 <div class="gold-separator"></div>
 
 <!-- Header -->
@@ -109,9 +113,10 @@
   </ul>
 </nav>
 
+<!-- Gold Separator -->
 <div class="gold-separator"></div>
 
-<!-- Hero Carousel -->
+<!-- Hero Section -->
 <section class="hero-carousel">
   <video class="hero-video active" autoplay muted playsinline id="introVideo">
     <source src="vids/wedding.mp4" type="video/mp4">
@@ -122,13 +127,14 @@
   <img src="images/hero4.jpg" class="hero-img" />
   <img src="images/hero5.jpg" class="hero-img" />
 
-  <!-- Animated Wedding Title -->
+  <!-- Typewriter Title -->
   <div id="typewriterTitle"></div>
 
-  <!-- RSVP Call-to-Action Button -->
+  <!-- RSVP CTA -->
   <button id="rsvpHeroBtn" class="rsvp-hero-btn" onclick="window.location.href='rsvp.html'">RSVP</button>
 </section>
 
+<!-- Gold Separator -->
 <div class="gold-separator"></div>
 
 <!-- Footer -->
@@ -152,7 +158,10 @@
   </div>
 </footer>
 
-<!-- Hero Slideshow Logic -->
+<!-- Scripts -->
+<script src="js/main.js" defer></script>
+
+<!-- Hero Carousel Logic -->
 <script>
   window.addEventListener('load', () => {
     const video = document.getElementById('introVideo');
@@ -173,7 +182,7 @@
 
 <!-- Mobile Menu Toggle -->
 <script>
-  document.getElementById('hamburger').addEventListener('click', function () {
+  document.getElementById('hamburger').addEventListener('click', () => {
     document.getElementById('navLinks').classList.toggle('active');
   });
 
@@ -184,29 +193,7 @@
   });
 </script>
 
-<!-- Share Button Using Native API -->
-<script>
-  const shareBtn = document.getElementById("shareBtn");
-  if (navigator.share) {
-    shareBtn.addEventListener("click", async () => {
-      try {
-        await navigator.share({
-          title: "Cedric & Ruth Wedding",
-          text: "Join us in celebrating the wedding of Cedric & Ruth!",
-          url: window.location.href,
-        });
-      } catch (err) {
-        console.error("Share failed:", err.message);
-      }
-    });
-  } else {
-    shareBtn.addEventListener("click", () => {
-      alert("Sharing is not supported on this device. Please copy the link.");
-    });
-  }
-</script>
-
-<!-- Animated Typewriter Wedding Title -->
+<!-- Typewriter Title Animation -->
 <script>
   function renderTypewriterTitle(containerId, callbackAfterAllLines) {
     const lines = ["Cedric & Ruth", "Are", "Getting Married"];
