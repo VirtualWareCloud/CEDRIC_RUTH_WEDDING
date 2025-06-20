@@ -74,7 +74,7 @@
 </head>
 <body>
 
-<!-- Gold Separator Top -->
+<!-- Gold Separator -->
 <div class="gold-separator"></div>
 
 <!-- Header -->
@@ -107,7 +107,7 @@
 <!-- Gold Separator -->
 <div class="gold-separator"></div>
 
-<!-- Dress Code Gallery Section -->
+<!-- Dress Code Section -->
 <section class="section">
   <div class="section-container">
     <h2>Dress Code Inspiration</h2>
@@ -135,7 +135,7 @@
       </div>
     </div>
 
-    <!-- Button to Colour Palette -->
+    <!-- Link to Colour Palette -->
     <div class="center-button-wrapper">
       <a href="Colour_Pallette.html" class="palette-button">Explore the Colour Palette</a>
     </div>
@@ -169,23 +169,24 @@
 </footer>
 
 <script>
-  // Hamburger Toggle
+  // Hamburger Toggle (works on desktop & mobile)
   document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('navLinks').classList.toggle('active');
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('active');
   });
 
-  // Auto-close nav on link click
+  // Auto-close menu when clicking a link (for mobile)
   document.querySelectorAll('#navLinks a').forEach(link => {
     link.addEventListener('click', () => {
       document.getElementById('navLinks').classList.remove('active');
     });
   });
 
-  // Share Button with Fallback
+  // Share Button with Clipboard fallback
   document.getElementById('shareBtn').addEventListener('click', async () => {
     const shareData = {
       title: 'Cedric & Ruth Wedding',
-      text: 'Dress code inspiration and ideas for the big day! 💫',
+      text: 'See dress inspiration for our wedding 💛',
       url: window.location.href
     };
     try {
@@ -193,10 +194,10 @@
         await navigator.share(shareData);
       } else {
         await navigator.clipboard.writeText(shareData.url);
-        alert('📋 Link copied! Share it with your friends.');
+        alert('📋 Link copied to clipboard!');
       }
     } catch (err) {
-      alert('Error sharing: ' + err.message);
+      alert('Sharing failed: ' + err.message);
     }
   });
 </script>
