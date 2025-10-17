@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cédric & Ruth — Wedding Itinerary (24 Oct – 2 Nov 2025)</title>
+<meta name="description" content="Modern wedding itinerary for Cédric & Ruth — Johannesburg to Cape Town, Oct 24 to Nov 2, 2025.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* THEME */
+    --bg:#0b0d14;
+    --bg-2:#0e1220;
+    --card:#12182a;
+    --text:#e9eefb;
+    --muted:#b9c2dc;
+    --accent:#00d4ff;       /* neon cyan */
+    --accent-2:#a16eff;     /* neon lilac */
+    --gold:#e8c77b;         /* elegant wedding hint */
+    --ok:#3bd1a2;
+    --warn:#ffae42;
+    --radius:18px;
+    --shadow:0 12px 28px rgba(0,0,0,.35);
+    --glass:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    color:var(--text);
+    background:
+      radial-gradient(1200px 600px at -10% -10%, rgba(161,110,255,.25), transparent 60%),
+      radial-gradient(900px 500px at 110% 0%, rgba(0,212,255,.22), transparent 55%),
+      linear-gradient(180deg,var(--bg),var(--bg-2));
+    font:16px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    overflow-x:hidden;
+  }
+
+  /* ====== NAVBAR ====== */
+  .nav{
+    position:sticky; top:0; z-index:1000;
+    backdrop-filter: blur(8px);
+    background: linear-gradient(180deg, rgba(14,18,32,.9), rgba(14,18,32,.55));
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .nav-inner{
+    max-width:1100px; margin:0 auto; padding:10px 16px;
+    display:flex; gap:12px; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text);
+  }
+  .brand-logo{
+    width:34px; height:34px; border-radius:10px;
+    background:conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent));
+    box-shadow:0 0 20px rgba(161,110,255,.45), inset 0 0 12px rgba(255,255,255,.25);
+  }
+  .brand h1{
+    margin:0; font:800 16px/1 "Playfair Display", serif; letter-spacing:.3px;
+  }
+  .nav-actions{display:flex; gap:10px; align-items:center}
+  .btn{
+    appearance:none; border:0; cursor:pointer; color:var(--text);
+    padding:10px 14px; border-radius:14px; font-weight:600;
+    background:var(--glass); box-shadow:var(--shadow);
+    border:1px solid rgba(255,255,255,.10);
+    transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn:active{transform:translateY(0)}
+  .btn-accent{
+    background:linear-gradient(135deg, rgba(0,212,255,.22), rgba(161,110,255,.22));
+    border:1px solid rgba(161,110,255,.45);
+  }
+
+  /* ====== HERO ====== */
+  .hero{
+    position:relative; overflow:hidden;
+    max-width:1100px; margin:22px auto 0; padding:34px 16px 8px;
+  }
+  .hero-card{
+    position:relative; border-radius:24px; padding:28px;
+    background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:var(--shadow);
+  }
+  .hero-bg{
+    position:absolute; inset:-2px; z-index:-1;
+    background:
+      radial-gradient(500px 180px at 30% 10%, rgba(232,199,123,.18), transparent 60%),
+      radial-gradient(400px 160px at 80% 0%, rgba(0,212,255,.12), transparent 60%);
+    filter: blur(10px);
+  }
+  .kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--muted); font-size:12px;
+  }
+  .title{
+    margin:10px 0 6px;
+    font:800 40px/1.1 "Playfair Display", serif;
+    letter-spacing:.3px;
+    background:linear-gradient(90deg, var(--text), var(--gold));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .subtitle{color:var(--muted); margin:0 0 18px}
+  .hero-row{display:flex; flex-wrap:wrap; gap:14px; align-items:center}
+  .chip{
+    font-weight:700; font-size:13px; padding:8px 12px; border-radius:999px;
+    background:linear-gradient(135deg, rgba(0,212,255,.18), rgba(161,110,255,.18));
+    border:1px solid rgba(255,255,255,.18);
+  }
+  .countdown{
+    margin-left:auto; display:flex; gap:10px; flex-wrap:wrap;
+  }
+  .cd-box{
+    min-width:90px; text-align:center; border-radius:14px; padding:10px 10px 12px;
+    background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .cd-num{font:800 26px/1 "Inter"; letter-spacing:.5px}
+  .cd-lbl{font-size:12px; color:var(--muted)}
+
+  /* ====== SECTION WRAPPER ====== */
+  .wrap{max-width:1100px; margin:24px auto 80px; padding:0 16px}
+
+  /* ====== TIMELINE ====== */
+  .timeline{
+    margin-top:22px; position:relative;
+  }
+  .day{
+    display:grid; grid-template-columns:28px 1fr; gap:14px; align-items:start;
+    margin:18px 0 28px;
+  }
+  .dot{
+    position:relative; width:28px; height:28px; border-radius:50%;
+    background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent-2));
+    box-shadow:0 0 14px rgba(0,212,255,.5), inset 0 0 6px rgba(255,255,255,.35);
+  }
+  .line{
+    position:absolute; width:2px; top:28px; bottom:-24px; left:13px;
+    background:linear-gradient(180deg, rgba(255,255,255,.12), transparent);
+  }
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:var(--radius); padding:18px; box-shadow:var(--shadow);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .card:hover{transform:translateY(-2px); border-color:rgba(161,110,255,.45)}
+  .day h3{margin:0 0 6px; font:800 20px/1.2 "Inter"}
+  .meta{display:flex; gap:10px; flex-wrap:wrap; margin:2px 0 10px}
+  .tag{
+    font-weight:700; font-size:12px; padding:6px 10px; border-radius:999px;
+    color:#0b0d14;
+    background:linear-gradient(135deg, #76f3ff, #c6a5ff);
+  }
+  .tag.alt{background:linear-gradient(135deg, #ffd479, #ffe9b6)}
+  .list{margin:0; padding:0 0 0 16px}
+  .list li{margin:6px 0}
+  .addr{color:var(--muted); font-size:14px}
+  .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+  .btn-sm{padding:8px 12px; border-radius:12px; font-size:13px}
+  .checklist{margin:8px 0 0; padding-left:0; list-style:none}
+  .checklist li{
+    display:flex; gap:10px; align-items:flex-start; margin:6px 0;
+  }
+  .box{
+    width:18px; height:18px; border-radius:4px;
+    border:1.5px solid rgba(255,255,255,.35);
+    flex:0 0 18px; margin-top:2px;
+  }
+
+  /* ====== FOOTER ====== */
+  footer{
+    margin-top:40px; padding:30px 16px 60px; text-align:center; color:var(--muted);
+  }
+  .socials{display:flex; gap:10px; justify-content:center; margin:8px 0 0}
+  .footer-note{font-size:13px; margin-top:10px}
+
+  /* ====== UTIL ====== */
+  .grid2{display:grid; gap:10px}
+  @media (min-width:720px){ .grid2{grid-template-columns:1fr 1fr} }
+  a{color:var(--accent); text-decoration: none}
+  a:hover{text-decoration:underline}
+  .hidden{display:none}
+  .center{text-align:center}
+  .mt8{margin-top:8px}
+  .mt12{margin-top:12px}
+  .mt16{margin-top:16px}
+
+  /* FUNKY floating shapes */
+  .floaty{
+    position:absolute; inset: -120px -120px auto auto; pointer-events:none; z-index:-1;
+    width:240px; height:240px; border-radius:40px;
+    background:conic-gradient(from 0deg, rgba(0,212,255,.35), rgba(161,110,255,.35), rgba(0,212,255,.35));
+    filter: blur(40px); opacity:.5; animation:spin 16s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand" id="top">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <h1>Cédric &amp; Ruth</h1>
+      </a>
+      <div class="nav-actions">
+        <button class="btn btn-accent" id="shareBtn" title="Share itinerary">Share</button>
+        <a class="btn" href="#itinerary">Itinerary</a>
+        <a class="btn" href="#travel-notes">Travel Notes</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== HERO ====== -->
+  <header class="hero">
+    <div class="hero-card">
+      <div class="hero-bg"></div>
+      <div class="floaty"></div>
+      <div class="kicker">Wedding Journey • South Africa</div>
+      <h2 class="title">Itinerary • Oct 24 – Nov 2, 2025</h2>
+      <p class="subtitle">Johannesburg ➜ Pilanesberg ➜ Franschhoek ➜ Cape Town</p>
+
+      <div class="hero-row">
+        <span class="chip">Formal Nudes • Elegant</span>
+        <span class="chip">Smart Casual • Safari Tones</span>
+        <div class="countdown" id="countdown">
+          <!-- Countdown boxes injected by JS -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== MAIN ====== -->
+  <main class="wrap" id="itinerary">
+    <div class="timeline">
+
+      <!-- FRIDAY 24 OCT -->
+      <section class="day" aria-label="Friday 24 October — Arrival in Johannesburg">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <article class="card">
+          <h3>FRIDAY, 24 OCTOBER — Arrival in Johannesburg</h3>
+          <div class="meta">
+            <span class="tag">08:30 Arrival</span>
+            <span class="tag alt">15:00 Check-in</span>
+            <span class="tag">19:00 Dinner</span>
+          </div>
+          <ul class="checklist">
+            <li><span class="box" aria-hidden="true"></span> Arrival at <strong>OR Tambo International Airport</strong> — 08:30</li>
+            <li><span class="box"></span> <strong>Gautrain</strong>: OR Tambo → Sandton Station</li>
+            <li><span class="box"></span> Stop at our home in <strong>Bryanston</strong> — freshen up, shower, light lunch & rest</li>
+            <li><span class="box"></span> <strong>Hotel Check-in — 15:00</strong><br>
+              <span class="addr">
+                <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Sandton+Sun+%26+Towers%2C+Corner+Alice+Lane+%26+Fifth+Street%2C+Sandton">
+                  Sandton Sun &amp; Towers, Corner Alice Lane &amp; Fifth Street, Sandton
+                </a>
+              </span>
+            </li>
+            <li><span class="box"></span> Dinner at the hotel restaurant — 19:00<br>
+              <em>Dress code: Smart casual</em>
+            </li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-sm" href="#tips-arrival">View tips</a>
+            <a class="btn btn-sm" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=OR+Tambo+International+Airport">Open OR Tambo in Maps</a>
+          </div>
+        </article>
+      </section>
+
+      <!-- SATURDAY 25 OCT -->
+      <section class="day" aria-label="Saturday 25 October — Nirox Day">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <article class="card">
+          <h3>SATURDAY, 25 OCTOBER — Nirox Day</h3>
+          <div class="meta">
+            <span class="tag">14:00 Lunch</span>
+            <span class="tag alt">Casual Nudes</span>
+          </div>
+          <ul class="checklist">
+            <li><span class="box"></span> Breakfast at the hotel</li>
+            <li><span class="box"></span> Travel to Ruth &amp; Cédric’s home</li>
+            <li><span class="box"></span> <strong>Lunch 14:00</strong> at <strong>Nirox Sculpture Park</strong><br>
+              <span class="addr">
+                <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Nirox+Sculpture+Park%2C+Kromdraai+Road%2C+Kromdraai%2C+Gauteng">
+                  Nirox Sculpture Park, Kromdraai Road, Kromdraai, Gauteng
+                </a>
+              </span>
+            </li>
+            <li><span class="box"></span> Dress code: <strong>Casual nudes</strong> — light, comfortable clothing. It will be hot 🔥 — please bring a hat, sunglasses & sunscreen.</li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-sm" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Nirox+Sculpture+Park">Open Nirox in Maps</a>
+          </div>
+        </article>
+      </section>
+
+      <!-- SUNDAY 26 OCT -->
+      <section class="day" aria-label="Sunday 26 October — Pilanesberg Safari">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <article class="card">
+          <h3>SUNDAY, 26 OCTOBER — Pilanesberg Safari</h3>
+          <div class="meta">
+            <span class="tag">12:00 Depart JHB</span>
+            <span class="tag alt">16:30 Game Drive</span>
+          </div>
+          <ul class="checklist">
+            <li><span class="box"></span> Depart Johannesburg — 12:00</li>
+            <li><span class="box"></span> Check-in: <strong>Bakubung Bush Lodge</strong><br>
+              <span class="addr">
+                <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bakubung+Gate%2C+Pilanesberg+National+Park%2C+North+West">
+                  Bakubung Gate, Pilanesberg National Park, North West
+                </a>
+              </span>
+            </li>
+            <li><span class="box"></span> First game drive — 16:30</li>
+            <li><span class="box"></span> Dinner at the lodge house</li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-sm" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bakubung+Bush+Lodge">Open Bakubung in Maps</a>
+          </div>
+        </article>
+      </section>
+
+      <!-- MONDAY 27 OCT -->
+      <section class="day" aria-label="Monday 27 October — Safari Experience">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <article class="card">
+          <h3>MONDAY, 27 OCTOBER — Safari Experience</h3>
+          <div class="meta">
+            <span class="tag">05:30 Game Drive</span>
+            <span class="tag">16:30 Game Drive</span>
+            <span class="tag alt">Safari Tones</span>
+          </div>
+          <ul class="checklist">
+            <li><span class="box"></span> Morning game drive — 05:30</li>
+            <li><span class="box"></span> Afternoon game drive — 16:30</li>
+            <li><span class="box"></span> Dinner at the lodge</li>
+            <li><span class="box"></span> Dress code: <strong>Neutral safari tones</strong> — breathable, comfortable clothing</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- TUESDAY 28 OCT -->
+      <section class="day" aria-label="Tuesday 28 October — Return to Johannesburg">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <article class="card">
+          <h3>TUESDAY, 28 OCTOBER — Return to Johannesburg</h3>
+          <ul class="checklist">
+            <li><span class="box"></span> Travel back to Johannesburg</li>
+            <li><span class="box"></span> Check-in: <strong>Apartment in Sandton</strong><br>
+              <span class="addr"><em>(Address to be shared closer to the date)</em></span>
+            </li>
+            <li><span class="box"></span> Relaxed evening & free time</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- WEDNESDAY 29 OCT -->
+      <section class="day" aria-label="Wednesday 29 October — Leisure Day">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <article class="card">
+          <h3>WEDNESDAY, 29 OCTOBER — Leisure Day</h3>
+          <ul class="checklist">
+            <li><span class="box"></span> A relaxed, flexible day</li>
+            <li><span class="box"></span> Optional Soweto tour</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- THURSDAY 30 OCT -->
+      <section class="day" aria-label="Thursday 30 October — Lobola Day">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <article class="card">
+          <h3>THURSDAY, 30 OCTOBER — Lobola Day</h3>
+          <ul class="checklist">
+            <li><span class="box"></span> Full-day at Ruth’s parents’ house</li>
+            <li><span class="box"></span> Dress code: <strong>Smart casual</strong></li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- FRIDAY 31 OCT -->
+      <section class="day" aria-label="Friday 31 October — Travel to Cape Town">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <article class="card">
+          <h3>FRIDAY, 31 OCTOBER — Travel to Cape Town</h3>
+          <div class="meta">
+            <span class="tag">10:00 Flight</span>
+            <span class="tag">12:15 Arrival</span>
+            <span class="tag alt">15:00 Wine Tasting</span>
+          </div>
+          <ul class="checklist">
+            <li><span class="box"></span> Flight from Johannesburg — 10:00</li>
+            <li><span class="box"></span> Arrival in Cape Town — 12:15</li>
+            <li><span class="box"></span> Stops:
+              <ul class="list">
+                <li><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tokara+Wine+Estate%2C+Helshoogte+Road%2C+Stellenbosch">Tokara Wine Estate — Helshoogte Road, Stellenbosch</a></li>
+                <li><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Delaire+Graff+Estate%2C+Helshoogte+Pass%2C+Stellenbosch">Delaire Graff Estate — Helshoogte Pass, Stellenbosch</a></li>
+              </ul>
+            </li>
+            <li><span class="box"></span> Lunch in Franschhoek</li>
+            <li><span class="box"></span> Wine tasting — 15:00<br>
+              <span class="addr">
+                <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=La+Motte+Wine+Estate%2C+R45+Main+Road%2C+Franschhoek">
+                  La Motte Wine Estate — R45 Main Road, Franschhoek
+                </a>
+              </span>
+            </li>
+            <li><span class="box"></span> Check-in: Wedding venue accommodation, Franschhoek<br>
+              <em>Dress code: Smart casual</em>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- SATURDAY 1 NOV -->
+      <section class="day" aria-label="Saturday 1 November — Wedding Day">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <article class="card">
+          <h3>SATURDAY, 1 NOVEMBER — Wedding Day</h3>
+          <ul class="checklist">
+            <li><span class="box"></span> Full-day celebration at the wedding venue, Franschhoek</li>
+            <li><span class="box"></span> Dress code: <strong>Nudes — Formal & Elegant</strong></li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- SUNDAY 2 NOV -->
+      <section class="day" aria-label="Sunday 2 November — Cape Town Lunch & Relaxation">
+        <div class="dot"></div>
+        <article class="card">
+          <h3>SUNDAY, 2 NOVEMBER — Cape Town Lunch & Relaxation</h3>
+          <ul class="checklist">
+            <li><span class="box"></span> Check-out from the wedding venue</li>
+            <li><span class="box"></span> Lunch at <strong>The Bungalow, Clifton — 13:00</strong><br>
+              <span class="addr">
+                <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Glen+Country+Club%2C+3+Victoria+Road%2C+Clifton%2C+Cape+Town">
+                  Glen Country Club, 3 Victoria Road, Clifton, Cape Town
+                </a>
+              </span>
+            </li>
+            <li><span class="box"></span> Check-in at hotel in Cape Town for the night</li>
+          </ul>
+        </article>
+      </section>
+
+    </div>
+
+    <!-- ====== NOTES / TIPS ====== -->
+    <section id="travel-notes" class="grid2 mt16">
+      <article class="card" id="tips-arrival">
+        <h3>Travel Notes</h3>
+        <ul class="list">
+          <li>Gautrain from OR Tambo to Sandton runs ~10–20 min intervals; load a little extra on the card for return trips.</li>
+          <li>Keep sunscreen and water handy for Nirox and game drives. Hats & light clothing recommended.</li>
+          <li>Safari drives can be chilly at dawn/evening — bring a light jacket.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Dress Codes</h3>
+        <ul class="list">
+          <li><strong>Smart Casual</strong> — Arrival, Cape Winelands day</li>
+          <li><strong>Casual Nudes</strong> — Nirox (beige/cream/soft tones)</li>
+          <li><strong>Safari Tones</strong> — Lodge days (breathable fabrics)</li>
+          <li><strong>Nudes Formal</strong> — Wedding day (elegant)</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer>
+    <div class="socials">
+      <a class="btn btn-sm" href="#top">Back to top</a>
+      <button class="btn btn-sm" id="addCalendar">Add Wedding Day Reminder</button>
+    </div>
+    <div class="footer-note">Designed by VirtualWareCloud • Made with love for family & friends</div>
+  </footer>
+
+<script>
+  /* ============= Smooth Scroll (native behavior in modern browsers) ============= */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if(el){
+        e.preventDefault();
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+
+  /* ============= Countdown to Nov 1, 2025 (00:00 local) ============= */
+  (function(){
+    const target = new Date('2025-11-01T00:00:00');
+    const box = document.getElementById('countdown');
+
+    function makeUnit(label){
+      const c = document.createElement('div'); c.className='cd-box';
+      const n = document.createElement('div'); n.className='cd-num'; n.textContent='–';
+      const l = document.createElement('div'); l.className='cd-lbl'; l.textContent=label;
+      c.appendChild(n); c.appendChild(l); return {c,n};
+    }
+    const D=makeUnit('Days'), H=makeUnit('Hours'), M=makeUnit('Minutes'), S=makeUnit('Seconds');
+    [D.c,H.c,M.c,S.c].forEach(x=>box.appendChild(x));
+
+    function tick(){
+      const now = new Date();
+      let diff = Math.max(0, target - now);
+      const d = Math.floor(diff/86400000); diff -= d*86400000;
+      const h = Math.floor(diff/3600000);  diff -= h*3600000;
+      const m = Math.floor(diff/60000);    diff -= m*60000;
+      const s = Math.floor(diff/1000);
+      D.n.textContent=d; H.n.textContent=h.toString().padStart(2,'0');
+      M.n.textContent=m.toString().padStart(2,'0'); S.n.textContent=s.toString().padStart(2,'0');
+    }
+    tick(); setInterval(tick, 1000);
+  })();
+
+  /* ============= Native Share ============= */
+  document.getElementById('shareBtn').addEventListener('click', async ()=>{
+    const shareData = {
+      title: 'Cédric & Ruth — Wedding Itinerary',
+      text: 'Wedding itinerary • Oct 24 – Nov 2, 2025 • Johannesburg → Pilanesberg → Franschhoek → Cape Town',
+      url: location.href
+    };
+    if(navigator.share){
+      try{ await navigator.share(shareData); }catch(e){}
+    }else{
+      // Fallback: copy URL
+      try{
+        await navigator.clipboard.writeText(location.href);
+        alert('Link copied! Share this itinerary with your guests 💌');
+      }catch(e){
+        prompt('Copy this link and share:', location.href);
+      }
+    }
+  });
+
+  /* ============= Add Calendar (Wedding Day) ============= */
+  document.getElementById('addCalendar').addEventListener('click', ()=>{
+    // Create a simple .ics for Nov 1, 2025 (full day)
+    const ics = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//VirtualWareCloud//Wedding//EN',
+      'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT',
+      'DTSTAMP:' + toICSDateTime(new Date()),
+      'DTSTART;VALUE=DATE:20251101',
+      'DTEND;VALUE=DATE:20251102',
+      'SUMMARY:Cédric & Ruth — Wedding Day (Franschhoek)',
+      'DESCRIPTION:Formal nudes — elegant. See full itinerary link: ' + location.href,
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\\r\\n');
+
+    const blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = Object.assign(document.createElement('a'), {href:url, download:'Cedric_Ruth_Wedding_Day.ics'});
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url), 1500);
+
+    function toICSDateTime(date){
+      const pad=n=>String(n).padStart(2,'0');
+      return date.getUTCFullYear()
+        + pad(date.getUTCMonth()+1)
+        + pad(date.getUTCDate()) + 'T'
+        + pad(date.getUTCHours())
+        + pad(date.getUTCMinutes())
+        + pad(date.getUTCSeconds()) + 'Z';
+    }
+  });
+</script>
+</body>
+</html>
